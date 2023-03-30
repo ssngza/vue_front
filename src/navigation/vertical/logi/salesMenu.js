@@ -39,6 +39,20 @@ export default [
       },
       {
         title: '외주관리',
+        children: [
+          {
+            title: '수주 조회',
+            route: 'contractInfo',
+          },
+          {
+            title: '수주 등록',
+            route: 'registContract',
+          },
+        ],
+      },
+      {
+        title: 'asdfasdfasdf 계획',
+        route: 'dashboard-analytics',
       },
     ],
   },
