@@ -1,6 +1,6 @@
 import { $themeConfig } from '@themeConfig'
 import axios from 'axios'
-import { hrApi, sys } from '@/api'
+import {hrApi, sys} from '@/api'
 
 export default {
   namespaced: true,
