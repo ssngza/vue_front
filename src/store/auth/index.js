@@ -1,6 +1,6 @@
 import { $themeConfig } from '@themeConfig'
 import axios from 'axios'
-import { hrApi } from '@/api'
+import {hrApi, sys} from '@/api'
 
 export default {
   namespaced: true,
@@ -46,7 +46,7 @@ export default {
       const {
         companyCode, workplaceCode, empCode, password,
       } = payload
-      const { data } = await axios.post('/api/auth/login', {
+      const { data } = await sys.post('/login', {
         empCode,
         companyCode,
         workplaceCode,
