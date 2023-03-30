@@ -27,6 +27,7 @@ export default [
       },
       {
         title: '작업장/작업장로그',
+        route: 'workPlace'
       },
     ],
   },
