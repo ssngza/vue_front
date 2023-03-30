@@ -83,6 +83,67 @@ const salesRoute = [
     },
   },
   {
+    path: `${ERP}/outsourceOrder`,
+    name: 'outsourceOrder',
+    component: () => import('@/views/logistic/sales/deliveryInfo/DeliveryInfo'),
+    meta: {
+      pageTitle: '외주 발주 관리',
+      breadcrumb: [
+        {
+          text: '영업 관리',
+        },
+        {
+          text: '외주 관리',
+},
+        {
+          text: '외주 발주 관리',
+          active: true
+        },
+      ],
+    },
+  },
+    //
+  {
+    path: `${ERP}/outsourceForward`,
+    name: 'outsourceForward',
+    component: () => import('@/views/logistic/sales/deliveryInfo/DeliveryInfo'),
+    meta: {
+      pageTitle: '외주 자재 출고 관리',
+      breadcrumb: [
+        {
+          text: '영업 관리',
+        },
+        {
+          text: '외주 관리',
+        },
+        {
+          text: '외주 자재 출고 관리',
+          active: true
+        },
+      ],
+    },
+  },
+  {
+    path: `${ERP}/outsourceInspection`,
+    name: 'outsourceInspection',
+    component: () => import('@/views/logistic/sales/deliveryInfo/DeliveryInfo'),
+    meta: {
+      pageTitle: '외주 자재 실적 검사',
+      breadcrumb: [
+        {
+          text: '영업 관리',
+        },
+        {
+          text: '외주 관리',
+        },
+        {
+          text: '외주 자재 실적 검사',
+          active: true
+        },
+      ],
+    },
+  },
+  {
     path: `${ERP}/deliveryInfoPage`,
     name: 'deliveryInfoPage',
     component: () => import('@/views/logistic/sales/deliveryInfo/DeliveryInfo'),
