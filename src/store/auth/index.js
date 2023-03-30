@@ -46,7 +46,7 @@ export default {
       const {
         companyCode, workplaceCode, empCode, password,
       } = payload
-      const { data } = await axios.post('/api/auth/login', {
+      const { data } = await axios.post('http://localhost:4000/erp/sys/login', {
         empCode,
         companyCode,
         workplaceCode,
