@@ -29,6 +29,12 @@ const AccountRoute = [
     // eslint-disable-next-line import/no-unresolved
     component: () => import('@/views/account/account/JournalPage.vue'),
   },
+  {
+    path: '/acc/account/journalDetailForm2',
+    name: 'journalForm222',
+    props: true, // true로 설정하면 데이터를 props로도 받습니다.
+    component: () => import('@/views/account/account/JournalFormPage.vue'),
+  },
 
 ]
 
