@@ -53,7 +53,11 @@ const accountRouter = [
     // eslint-disable-next-line import/no-unresolved
     component: () => import('@/views/account/base/AccountCodeManagerPage.vue'),
   },
-
+  {
+    path: '/acc/base/customerManager',
+    name: 'customerManager',
+    component: () => import('@/views/account/base/CustomerManagerPage.vue'),
+  },
   ...AccountRoute,
   ...StatementRoute,
 ]
