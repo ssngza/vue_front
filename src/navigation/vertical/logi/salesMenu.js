@@ -37,23 +37,7 @@ export default [
         title: '판매 계획',
         route: 'dashboard-analytics',
       },
-      {
-        title: '외주관리',
-        children: [
-          {
-            title: '외주 발주 관리',
-            route: 'outsourceOrder',
-          },
-          {
-            title: '외주 자재 출고 관리',
-            route: 'outsourceForward',
-          },
-          {
-            title: '외주 자재 실적 검사',
-            route: 'outsourceInspection',
-          },
-        ],
-      },
+
     ],
   },
 ]
