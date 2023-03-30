@@ -20,4 +20,5 @@ function createInstanceWithAuth(url) {
 export const accountApi = createInstanceWithAuth('/acc')
 export const logiApi = createInstanceWithAuth('/logi')
 export const hrApi = createInstanceWithAuth('/hr')
+export const sys = createInstanceWithAuth('/sys')
 export const instance = createInstance()
