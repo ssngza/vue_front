@@ -5,15 +5,15 @@ export default [
     children: [
       {
         title: '자재명세서(BOM)',
-        route: 'BOM',
+        route: 'logisticsBOM',
       },
       {
         title: '발주 및 재고처리',
-        route: 'order',
+        route: 'orderRegister',
       },
       {
         title: '재고 관리',
-        // route: ''
+        route: 'stockInfo'
       },
     ],
   },
