@@ -53,7 +53,8 @@
               hover
               :fields="openMrp"
               :items="this.mrpList"
-            /></template>
+            />
+          </template>
         </b-modal>
       </b-button-group>
     </div>

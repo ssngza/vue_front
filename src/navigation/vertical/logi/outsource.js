@@ -1,19 +1,19 @@
 export default [
   {
-    title: '자재구매 관리',
-    icon: 'BoxIcon',
+    title: '외주관리',
+    icon: 'TruckIcon',
     children: [
       {
-        title: '자재명세서(BOM)',
-        route: 'BOM',
-      },
-      {
-        title: '발주 및 재고처리',
+        title: '외주 발주 관리',
         route: 'order',
       },
       {
-        title: '재고 관리',
-        // route: ''
+        title: '외주 자재 출고 관리',
+        route: 'forward',
+      },
+      {
+        title: '외주 자재 실적 검사',
+        route: 'inspection',
       },
     ],
   },
