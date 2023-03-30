@@ -23,7 +23,7 @@ const logiRouter = [
   ...salesRoute,
   ...ProductionRoute,
   ...OutsourcRoute,
-  ...purchaseRoute
+  ...purchaseRoute,
   ...LogisticsInfoRoute
 ]
 export default logiRouter
