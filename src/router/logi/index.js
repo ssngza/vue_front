@@ -1,6 +1,7 @@
 import OutsourcRoute from '@/router/logi/OutsourceRoute'
 import ProductionRoute from './ProductionRoute'
 import salesRoute from './SalesRoute'
+import purchaseRoute from "@/router/logi/purchase";
 
 const ERP = '/logi'
 const logiRouter = [
@@ -21,5 +22,6 @@ const logiRouter = [
   ...salesRoute,
   ...ProductionRoute,
   ...OutsourcRoute,
+  ...purchaseRoute
 ]
 export default logiRouter
