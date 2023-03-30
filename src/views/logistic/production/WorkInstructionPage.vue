@@ -1,34 +1,54 @@
 <template>
-  <!--  <div>
-    <WorkInstructionGrid>
-      <template v-slot:header>
-        <h2
-          class="mb-md-1"
-          style="width: 100px"
-        >
-          작업지시
-        </h2>
-      </template>
-    </WorkInstructionGrid>
-    <WorkInstructionDetailGrid>SET_TABLE
-      <template v-slot:header>
-        <h2>
-          작업지시현황
-        </h2>
-      </template>
-    </WorkInstructionDetailGrid>
-  </div>-->
-  <!--  <CommonGrid
-          grid-type="grid"
-          :buttonlist="buttonList"
-          title="작업지시"
-          :datepicker="true"
-          :search-customer="true"
-          @get-date="getDate"
-          @get-customer="getCustomer"
-          @get-grid-data="getGridData"
-  />-->
-  <div>
+  <component :is="'b-card'">
+    <b-tabs pills>
+      <b-tab
+          active
+      >
+        <template #title>
+          <feather-icon
+              icon="CornerDownRightIcon"
+              size="16"
+              class="mr-0 mr-sm-50"
+          />
+          <span class="d-none d-sm-inline">작업지시</span>
+        </template>
+        <!--  내용물 컴포넌트       -->
+        <WorkInstructionGrid />
+      </b-tab>
+
+      <b-tab>
+        <template #title>
+          <feather-icon
+              icon="CornerDownRightIcon"
+              size="16"
+              class="mr-0 mr-sm-50"
+          />
+          <span class="d-none d-sm-inline">작업지시현황</span>
+        </template>
+        <!--  내용물 컴포넌트       -->
+        <MrpGather
+            ref="MrpGather"
+        />
+      </b-tab>
+
+      <b-tab>
+        <template #title>
+          <feather-icon
+              icon="CornerDownRightIcon"
+              size="16"
+              class="mr-0 mr-sm-50"
+          />
+          <span class="d-none d-sm-inline">생산실적관리</span>
+        </template>
+        <!--  내용물 컴포넌트       -->
+        <MrpGather
+            ref="MrpGather"
+        />
+      </b-tab>
+
+    </b-tabs>
+  </component>
+<!--  <div>
     <CommonGrid
       title="작업지시"
       grid-type="grid"
@@ -43,10 +63,9 @@
       grid-type="detailGrid"
       title="작업지시상세"
     />
-    <button @click="showMe">
-      asd
-    </button>
-  </div>
+
+  </div>-->
+
 </template>
 
 <script>

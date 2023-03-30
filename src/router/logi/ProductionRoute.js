@@ -60,5 +60,22 @@ const ProductionRoute = [
     name: 'workInstruction',
     component: () => import('@/views/logistic/production/WorkInstructionPage'),
   },
+  {
+    path: '/logi/production/workPlace',
+    name: 'workPlace',
+    component: () => import('@/views/logistic/production/WorkPlacePage'),
+    meta: {
+      pageTitle: '작업장/작업장로그',
+      breadcrumb: [
+        {
+          text: '생산관리',
+        },
+        {
+          text: '작업장/작업장로그',
+        },
+
+      ],
+    },
+  },
 ]
 export default ProductionRoute

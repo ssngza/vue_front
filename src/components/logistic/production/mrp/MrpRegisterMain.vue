@@ -25,7 +25,7 @@
           />
           <span class="d-none d-sm-inline">소요량취합</span>
         </template>
-        <!--  내용물 컴포넌트       -->
+          내용물 컴포넌트
         <MrpGather
           ref="MrpGather"
         />
