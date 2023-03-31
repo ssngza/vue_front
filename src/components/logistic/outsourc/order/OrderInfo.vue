@@ -1,37 +1,58 @@
 <template>
   <div>
-    <component>
-      <b-tabs pills>
-        <b-tab
-            active
+
+    <b-button
+        style="float: right"
+        v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+        variant="outline-primary"
+        @click="OrderOpen"
+    >
+      외주 발주 조회
+    </b-button>
+    <b-radio
+        style="float: right"
+        v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+        variant="outline-primary"
+        @click="OptionOrderOpen"
+    >
+      발주/작업지시 기한
+    </b-radio>
+    <b-radio
+        style="float: right"
+        v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+        variant="outline-primary"
+        @click="selectAllRows"
+    >
+      발주/작업지시 완료기한
+    </b-radio>
+
+    <div
+        style="margin: 0 0 10px 0; float:right;"
+    >
+      <b-col>
+        <b-form-group
         >
-          <template #title>
-            <feather-icon
-                icon="CornerDownRightIcon"
-                size="16"
-                class="mr-0 mr-sm-50"
-            />
-            <span class="d-none d-sm-inline">외주 발주 등록</span>
-          </template>
-          <!--          내용컴포넌트-->
-          <OrderRegister/>
-        </b-tab>
-
-        <b-tab @click="searchMrpGatherList">
-          <template #title>
-            <feather-icon
-                icon="CornerDownRightIcon"
-                size="16"
-                class="mr-0 mr-sm-50"
-            />
-            <span class="d-none d-sm-inline">외주 발주 조회</span>
-          </template>
-          <!--          내용컴포넌트-->
-          <OrderInfo/>
-        </b-tab>
-
-      </b-tabs>
-    </component>
+          <flat-pickr
+              v-model="rangeDate"
+              placeholder="시작일 & 종료일"
+              class="form-control"
+              :config="{ mode: 'range'}"
+          />
+        </b-form-group>
+      </b-col>
+    </div>
+    <div>
+      <b-table
+          ref="selectableTable"
+          :items="this.orderList"
+          class="editable-tabdle"
+          hover
+          selectable
+          :select-mode="'multi'"
+          :fields="fields"
+          @row-selected="handleInput"
+      />
+    </div>
   </div>
 </template>
 
@@ -106,6 +127,15 @@ export default {
     },
     OrderOpen() {
       console.log('모의재고처리 및 취합발주')
+      console.log(this.rangeDate)
+      this.extractDate()
+      console.log(this.startDate)
+      console.log(this.endDate)
+      const payload = {
+        startDate:this.startDate,
+        endDate:this.endDate
+      }
+      this.$store.dispatch('logi/outsource/searchOutsourcInfoList', payload)
     },
     OptionOrderOpen() {
       console.log('임의발주')
