@@ -1,37 +1,67 @@
 <template>
   <div>
-    <component>
-      <b-tabs pills>
-        <b-tab
-            active
+      <b-button
+        v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+        style="float: right"
+        variant="outline-primary"
+        @click="searchOrderList"
+      >
+        외주 발주 등록 가능한 리스트 조회
+      </b-button>
+
+
+        <b-button
+            style="float: right"
+          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+          variant="outline-primary"
+          @click="OrderOpen"
         >
-          <template #title>
-            <feather-icon
-                icon="CornerDownRightIcon"
-                size="16"
-                class="mr-0 mr-sm-50"
-            />
-            <span class="d-none d-sm-inline">외주 발주 등록</span>
-          </template>
-          <!--          내용컴포넌트-->
-          <OrderRegister/>
-        </b-tab>
+          외주 발주 등록
+        </b-button>
+        <b-radio
+            style="float: right"
+          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+          variant="outline-primary"
+          @click="OptionOrderOpen"
+        >
+          발주/작업지시 기한
+        </b-radio>
+        <b-radio
+            style="float: right"
+            v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+          variant="outline-primary"
+          @click="selectAllRows"
+        >
+          발주/작업지시 완료기한
+        </b-radio>
 
-        <b-tab @click="searchMrpGatherList">
-          <template #title>
-            <feather-icon
-                icon="CornerDownRightIcon"
-                size="16"
-                class="mr-0 mr-sm-50"
+      <div
+        style="margin: 0 0 10px 0; float:right;"
+      >
+        <b-col>
+          <b-form-group
+          >
+            <flat-pickr
+              v-model="rangeDate"
+              placeholder="시작일 & 종료일"
+              class="form-control"
+              :config="{ mode: 'range'}"
             />
-            <span class="d-none d-sm-inline">외주 발주 조회</span>
-          </template>
-          <!--          내용컴포넌트-->
-          <OrderInfo/>
-        </b-tab>
-
-      </b-tabs>
-    </component>
+          </b-form-group>
+        </b-col>
+      </div>
+      <div>
+        <b-table
+          ref="selectableTable"
+          :items="this.orderList"
+          class="editable-tabdle"
+          hover
+          selectable
+          :select-mode="'multi'"
+          :fields="fields"
+          @row-selected="handleInput"
+        />
+      </div>
   </div>
 </template>
 

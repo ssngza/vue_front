@@ -9,6 +9,8 @@ export class WorkInstruction {
   public detailGrid: Object[] = [];
   public tableColumns: Object[] = [];
   public detailTableColumns: Object[] = [];
+
+  public workOrderListItem: Object[] = [];
 }
 
 const Production: Module<WorkInstruction, Object> = {
