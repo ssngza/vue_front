@@ -74,3 +74,44 @@ export const mrpInfoList = [
   { key: 'dueDate', label: '납기일' },
   { key: 'claimDate', label: '지시일' },
 ]
+
+export const workOrderList =[
+  { label: '소요량취합번호',key: 'mrpGatheringNo' },
+  { label: '품목분류', key: 'itemClassification' },
+  { label: '품목코드', key: 'itemCode' },
+  { label: '품목명', key: 'itemName' },
+  { label: '단위', key: 'unitOfMrp' },
+  { label: '필요수량', key: 'requiredAmount' },
+  { label: '작업지시기한', key: 'orderDate' },
+  { label: '작업완료기한', key: 'requiredDate' }
+]
+
+export const workOrderStatusList = [
+  { label: '작업지시일련번호', key: 'workOrderNo'},
+  { label: '소요량취합번호',  key: 'mrpGatheringNo'},
+  { label: '품목분류', key: 'itemClassification' },
+  { label: '품목코드', key: 'itemCode' },
+  { label: '품목명', key: 'itemName'},
+  { label: '단위', key: 'unitOfMrp' },
+  { label: '지시수량', key: 'requiredAmount' },
+  { label: '생산공정코드', key: 'productionProcessCode' },
+  { label: '생산공정명', key: 'productionProcessName' },
+  { label: '작업장코드', field: 'workSiteCode' },
+  { label: '작업장명', key: 'workStieName' },
+  { label: '완료상태', key: 'completionStatus' },
+  { label: '작업완료된수량', key: 'actualCompletionAmount' }
+]
+
+export const workPerformanceManagementList=[
+  { label: '생산완료날짜', key: 'workOrderCompletionDate'},
+  { label: '작업지시일련번호', key: 'workOrderNo' },
+  { label: '주생산계획번호', key: 'mpsNo' },
+  { label: '수주상세일련번호',  key: 'contractDetailNo' },
+  { label: '품목구분', key: 'itemClassification' },
+  { label: '품목코드', key: 'itemCode' },
+  { label: '품목명', key: 'itemName' },
+  { label: '단위', key: 'unit' },
+  { label: '작업지시수량', key: 'workOrderAmount' },
+  { label: '실제제작수량', key: 'actualCompletionAmount'},
+  { label: '공정성공율', key: 'workSuccessRate' }
+]
