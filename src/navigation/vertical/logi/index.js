@@ -4,6 +4,7 @@ import salesMenu from '@/navigation/vertical/logi/salesMenu'
 import logisticsInfo from '@/navigation/vertical/logi/logisicsInfo'
 import production from '@/navigation/vertical/logi/production'
 import outsource from '@/navigation/vertical/logi/outsource'
+import purchase from "@/navigation/vertical/logi/purchase";
 
 export default [
   ...dashboard,
@@ -16,4 +17,5 @@ export default [
   ...salesMenu,
   ...outsource,
   ...production,
+  ...purchase,
 ]
