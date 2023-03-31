@@ -8,8 +8,38 @@
 
     <div class="m-2">
 
-      <b-row>
-        <!-- Table Top -->
+      작업지시 필요 리스트 ( MRP 취합 기반 )
+
+      <b-button
+          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+          variant="outline-primary"
+      >
+        작업지시 필요항목 조회
+      </b-button>
+      <b-button
+          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+          variant="outline-primary"
+      >
+        작업지시 모의 전개
+      </b-button>
+
+      <div style="margin-top: 30px">
+        <b-table
+            class="editable-table"
+            hover
+            selectable
+            show-empty
+            empty-text="No matching records found"
+            :select-mode="'single'"
+            :fields="workOrderList"
+            :items="this.mpsList"
+        />
+      </div>
+
+
+
+<!--      <b-row>
+        &lt;!&ndash; Table Top &ndash;&gt;
         <b-col
           cols="12"
           md="10"
@@ -42,10 +72,10 @@
             작업지시 모의 전개
           </b-button>
         </b-col>
-      </b-row>
+      </b-row>-->
 
     </div>
-    <div
+<!--    <div
       style="overflow-y: scroll; max-height: 210px;"
       class="scrollStyle"
     >
@@ -63,7 +93,7 @@
         style="width: 1200px; min-width: 100%;"
         @row-selected="onRowSelected"
       />
-    </div>
+    </div>-->
     <div class="mx-2 mb-2">
       <b-row />
     </div>
@@ -83,6 +113,7 @@ import store from '@/store'
 import { mapState } from 'vuex'
 import CommonModal from '@/components/common/modal/CommonModal'
 import useInvoicesList from '@/components/logistic/sales/contract/contractInfoGrid/GridOption'
+import {workOrderList} from "@/components/logistic/production/fields";
 
 export default {
   components: {
@@ -130,8 +161,12 @@ export default {
       { value: 'CT-01', text: 'CT-01 | 수주일반' },
       { value: 'CT-02', text: 'CT-02 | 긴급수주' },
     ],
+    workOrderList
   }),
   methods: {
+    workOrderList() {
+      return workOrderList
+    },
     onRowSelected(items) {
       console.log(items[0].contractDetailTOList)
       this.$store.commit('logi/sales/setDetailGrid', items[0].contractDetailTOList)
@@ -235,6 +270,7 @@ export default {
 
 <style lang="scss">
   @import 'src/@core/scss/vue/libs/vue-select';
+
   .scrollStyle::-webkit-scrollbar-track
   {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);

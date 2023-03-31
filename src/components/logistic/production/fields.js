@@ -74,3 +74,14 @@ export const mrpInfoList = [
   { key: 'dueDate', label: '납기일' },
   { key: 'claimDate', label: '지시일' },
 ]
+
+export const workOrderList =[
+  { label: '소요량취합번호',key: 'mrpGatheringNo' },
+  { label: '품목분류', key: 'itemClassification' },
+  { label: '품목코드', key: 'itemCode' },
+  { label: '품목명', key: 'itemName' },
+  { label: '단위', key: 'unitOfMrp' },
+  { label: '필요수량', key: 'requiredAmount' },
+  { label: '작업지시기한', key: 'orderDate' },
+  { label: '작업완료기한', key: 'requiredDate' }
+]
