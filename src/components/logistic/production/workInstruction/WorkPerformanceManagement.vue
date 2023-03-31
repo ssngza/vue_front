@@ -22,7 +22,7 @@
             show-empty
             empty-text="No matching records found"
             :select-mode="'single'"
-            :fields="workOrderStatusList"
+            :fields="workPerformanceManagementList"
         />
       </div>
 
@@ -33,7 +33,7 @@
 
 <script>
 import { BCard, BCardText, BLink } from 'bootstrap-vue'
-import {workOrderStatusList} from "@/components/logistic/production/fields";
+import {workPerformanceManagementList} from "@/components/logistic/production/fields";
 
 export default {
   components: {
@@ -45,7 +45,7 @@ export default {
     selected: '',
     selectMode: 'single',
     modal: false,
-    workOrderStatusList
+    workPerformanceManagementList
   }),
 }
 </script>

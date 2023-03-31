@@ -8,7 +8,7 @@
 
     <div class="m-2">
 
-      작업지시 필요 리스트 ( MRP 취합 기반 )
+      <h2 style="margin-bottom: 30px">작업지시 필요 리스트 ( MRP 취합 기반 )</h2>
 
       <b-button
           v-ripple.400="'rgba(113, 102, 240, 0.15)'"
@@ -32,7 +32,6 @@
             empty-text="No matching records found"
             :select-mode="'single'"
             :fields="workOrderList"
-            :items="this.mpsList"
         />
       </div>
 
