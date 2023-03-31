@@ -117,7 +117,7 @@ export default [
       },
       {
         title: '거래처관리',
-        route: { name: '7' },
+        route: { name: 'customerManager' },
         icon: 'FileIcon',
       },
     ],
