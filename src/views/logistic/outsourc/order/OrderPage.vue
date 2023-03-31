@@ -1,6 +1,12 @@
 <template>
   <div>
-    <Order />
+
+
+
+      <Order />
+
+
+
   </div>
 </template>
 <script>

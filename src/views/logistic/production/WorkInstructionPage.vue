@@ -26,9 +26,7 @@
           <span class="d-none d-sm-inline">작업지시현황</span>
         </template>
         <!--  내용물 컴포넌트       -->
-        <MrpGather
-            ref="MrpGather"
-        />
+        <WorkOrderStatus />
       </b-tab>
 
       <b-tab>
@@ -41,9 +39,7 @@
           <span class="d-none d-sm-inline">생산실적관리</span>
         </template>
         <!--  내용물 컴포넌트       -->
-        <MrpGather
-            ref="MrpGather"
-        />
+        <WorkPerformanceManagement />
       </b-tab>
 
     </b-tabs>
@@ -77,6 +73,8 @@ import {
 import BEditableTable from 'bootstrap-vue-editable-table'
 import WorkInstructionGrid from '@/components/logistic/production/workInstruction/WorkInstructionGrid'
 import WorkInstructionDetailGrid from '@/components/logistic/production/workInstruction/WorkInstructionDetailGrid'
+import WorkOrderStatus from '@/components/logistic/production/workInstruction/WorkOrderStatus'
+import WorkPerformanceManagement from '@/components/logistic/production/workInstruction/WorkPerformanceManagement'
 import CommonGrid from '@/components/logistic/sales/gridComponent/CommonGrid'
 import { mapActions, mapState } from 'vuex'
 
@@ -107,6 +105,8 @@ export default {
     WorkInstructionGrid,
     WorkInstructionDetailGrid,
     CommonGrid,
+    WorkOrderStatus,
+    WorkPerformanceManagement
   },
   computed: {
     ...mapState({

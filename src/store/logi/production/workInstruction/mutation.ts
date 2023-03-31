@@ -11,6 +11,9 @@ export const mutations: MutationTree<WorkInstruction> = {
     state.tableColumns = tableColumns[0].tableColumns
     state.detailTableColumns = tableColumns[0].detailTableColumns
   },
+  SET_WORK_ORDER_LIST(state, workOrderListItem) {
+    state.workOrderListItem=workOrderListItem
+  }
 }
 
 export default mutations
