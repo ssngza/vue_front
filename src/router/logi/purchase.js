@@ -2,9 +2,9 @@ const purchaseRoute = [
     {
         path: '/logi/purchase/logisticsBOM',
         name: 'logisticsBOM',
-        component: () => import('@/views/logistic/sales/contract/ContractInfoPage'),
+        component: () => import('@/views/logistic/purchase/LogisticsBOM/LogisticsBOM'),
         meta: {
-            pageTitle: '자재구매 관리',
+            pageTitle: '자재명세서',
             breadcrumb: [
                 {
                     text: '자재구매 관리',
@@ -19,9 +19,9 @@ const purchaseRoute = [
     {
         path: '/logi/purchase/orderRegister',
         name: 'orderRegister',
-        component: () => import('@/views/logistic/sales/contract/ContractInfoPage'),
+        component: () => import('@/views/logistic/purchase/LogisticsBOM/LogisticsBOM'),
         meta: {
-            pageTitle: '자재구매 관리',
+            pageTitle: '발주 및 재고처리',
             breadcrumb: [
                 {
                     text: '자재구매 관리',
@@ -35,9 +35,9 @@ const purchaseRoute = [
     },    {
         path: '/logi/purchase/stockInfo',
         name: 'stockInfo',
-        component: () => import('@/views/logistic/sales/contract/ContractInfoPage'),
+        component: () => import('@/views/logistic/purchase/LogisticsBOM/LogisticsBOM'),
         meta: {
-            pageTitle: '자재구매 관리',
+            pageTitle: '재고 관리',
             breadcrumb: [
                 {
                     text: '자재구매 관리',
