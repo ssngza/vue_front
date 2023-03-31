@@ -94,6 +94,15 @@ function searchMrpGathering(payload) {
   })
 }
 
+
+function searchWorkOrderList() {
+  return logiApi.get('/production/getWorkOrderableMrpList')
+}
+
+function productionPerformanceInfoList(){
+  return logiApi.get('/production/getProductionPerformanceInfoList')
+}
+
 export {
   searchContractDetailInMpsAvailable,
   convertContractDetailToMps,
@@ -105,4 +114,5 @@ export {
   gatherResultRegist,
   searchMrpGathering,
   showWorkInfoList,
+  searchWorkOrderList
 }

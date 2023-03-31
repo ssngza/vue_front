@@ -1,6 +1,6 @@
 import { ActionContext, ActionTree } from 'vuex'
 // @ts-ignore
-import { showWorkInfoList } from '@/api/logi/production.js'
+import { showWorkInfoList, searchWorkOrderList } from '@/api/logi/production.js'
 import { WorkInstruction } from '@/store/logi/production/workInstruction/state'
 
 const actions: ActionTree<WorkInstruction, Object> = {
@@ -29,6 +29,21 @@ const actions: ActionTree<WorkInstruction, Object> = {
       return null
     }
   },
+
+  async SEARCH_WORK_ORDER_LIST({ commit }) {
+    console.log("씨발거ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ")
+    /*try {
+      const { data } = await searchWorkOrderList()
+      //commit('SET_SEARCH_MPS_LIST', data.result.data.gridRowJson)
+      return data
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message)
+      }
+      return null
+    }*/
+  },
+
 
 }
 
