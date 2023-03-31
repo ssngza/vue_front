@@ -13,6 +13,7 @@
       <b-button
           v-ripple.400="'rgba(113, 102, 240, 0.15)'"
           variant="outline-primary"
+          @click="searchWorkOrder"
       >
         작업지시 필요항목 조회
       </b-button>
@@ -109,10 +110,11 @@ import { avatarText } from '@core/utils/filter'
 import vSelect from 'vue-select'
 import { onUnmounted } from '@vue/composition-api'
 import store from '@/store'
-import { mapState } from 'vuex'
+import {mapActions, mapState} from 'vuex'
 import CommonModal from '@/components/common/modal/CommonModal'
 import useInvoicesList from '@/components/logistic/sales/contract/contractInfoGrid/GridOption'
 import {workOrderList} from "@/components/logistic/production/fields";
+import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 
 export default {
   components: {
@@ -146,11 +148,11 @@ export default {
       tableColumns: state => state.logi.sales.tableColumns,
       grid: state => state.logi.sales.grid,
       detailGrid: state => state.logi.sales.detailGrid,
+      workOrderListItem: state => state.logi.workInstruction.workOrderListItem
     }),
+/*    ...mapState('logi/workInstruction', ['workOrderListItem', 'workOrderListItem']),*/
   },
   watch: {
-  },
-  mounted() {
   },
   data: () => ({
     selected: '',
@@ -163,8 +165,18 @@ export default {
     workOrderList
   }),
   methods: {
-    workOrderList() {
-      return workOrderList
+    ...mapActions('logi/workInstruction', ['SEARCH_WORK_ORDER_LIST']),
+    searchWorkOrder() {
+/*      if (this.rangeDate === null) {
+        throw new Error('신청일자 선택하셈.')
+      } else {
+        this.extractDate()
+        const payload = { startDate: this.startDate, endDate: this.endDate }
+        this.SEARCH_MPS_LIST(payload)
+        this.alert('조회 성공')
+      }*/
+      console.log("안해 시발")
+      this.$store.dispatch('logi/workInstruction/SEARCH_WORK_ORDER_LIST')
     },
     onRowSelected(items) {
       console.log(items[0].contractDetailTOList)

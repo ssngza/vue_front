@@ -10,6 +10,7 @@
       <b-button
           v-ripple.400="'rgba(113, 102, 240, 0.15)'"
           variant="outline-primary"
+          @click="searchProductionPerformanceInfoList"
       >
         생산실적조회
       </b-button>
@@ -47,6 +48,9 @@ export default {
     modal: false,
     workPerformanceManagementList
   }),
+  methods: {
+
+  }
 }
 </script>
 
