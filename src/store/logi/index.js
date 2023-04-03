@@ -6,6 +6,7 @@ import workInstruction from '@/store/logi/production/workInstruction/state'
 import sales from './sales/state'
 import base from './base/state'
 import outsource from './outsourc/state'
+import bom from '@/store/logi/purchase/bom/state'
 
 export default {
   namespaced: true,
@@ -19,6 +20,6 @@ export default {
   mutations: {
   },
   modules: {
-    sales, mps, mrp, workInstruction, base, order, outsource
+    sales, mps, mrp, workInstruction, base, order, outsource, bom
   },
 }
