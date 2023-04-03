@@ -20,10 +20,12 @@
             class="editable-table"
             hover
             selectable
+            :sticky-header="true"
             show-empty
             empty-text="No matching records found"
             :select-mode="'single'"
             :fields="workPerformanceManagementList"
+            :items="this.workPerformanceManagementListItem"
         />
       </div>
 
@@ -35,6 +37,7 @@
 <script>
 import { BCard, BCardText, BLink } from 'bootstrap-vue'
 import {workPerformanceManagementList} from "@/components/logistic/production/fields";
+import {mapActions, mapState} from "vuex";
 
 export default {
   components: {
@@ -48,8 +51,17 @@ export default {
     modal: false,
     workPerformanceManagementList
   }),
+  computed: {
+    ...mapState('logi/workInstruction', ['workPerformanceManagementListItem'])
+  },
   methods: {
+    ...mapActions('logi/workInstruction', ['SEARCH_PRODUCTION_PERFORMANCE_INFO_LIST']),
+    searchProductionPerformanceInfoList() {
 
+      console.log("뜨니?^^;;;;;;;;")
+      this.SEARCH_PRODUCTION_PERFORMANCE_INFO_LIST()
+      // this.$store.dispatch('logi/workInstruction/SEARCH_WORK_ORDER_LIST')
+    },
   }
 }
 </script>

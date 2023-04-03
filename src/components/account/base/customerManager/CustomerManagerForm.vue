@@ -4,12 +4,13 @@
     grid-type="grid"
     :buttonlist="buttonList"
     title="거래처관리"
-    column-width="1700px"
+    column-width="3000px"
     only-one="true"
     @row-selected="showGridData"
     @find-data="getGridData"
     @input-modal="gridInputModal"
     @regist-data="registData"
+    @delete-data="deleteData"
   />
 </div>
 </template>
@@ -49,7 +50,14 @@ export default {
 
     CustomerGrid
   },
+  computed: {
+    ...mapState({
+      grid: state=>state.grid,
+
+    })
+  },
   data: ()=>({
+    selected: '',
     buttonList:[
       {
         value: '조회',
@@ -88,13 +96,38 @@ export default {
           key: 'businessLicenseNumber', label: '사업자등록번호', sortable: true,
         },
         {
-          key: 'customerBusinessConditions', label: '종목', sortable: true
+          key: 'customerBusinessConditions', label: '업태', sortable: true
         },
+        {
+          key: 'customerBusinessItems', label: '종목', sortable: true
+        },
+        {
+          key: 'customerBasicAddress', label: '거래처기본주소', sortable: true
+        }
       ]
     }]
 
     this.$store.commit('SET_TABLE', tableColumns)
 
+  },
+  methods: {
+    showGridData(val){
+      console.log(val)
+    },
+    getGridData(){
+      console.log("getGridData")
+      this.$store.dispatch('account/base/SEARCH_CUSTOMER_INFO_LIST')
+    },
+    deleteData(){
+      console.log("deleteData")
+      this.$store.dispatch('account/base/DELETE_CUSTOMER_CODE')
+    },
+    gridInputModal(){
+
+    },
+    async registData(){
+
+    }
   },
 }
 </script>

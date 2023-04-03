@@ -10,6 +10,8 @@ export default {
     accountControllCodeList: [],
     accountLederList: [],
     generalAccountLedgerList: [],
+    customerList: [],
+    customerCode:'',
   },
   getters: {
     /**

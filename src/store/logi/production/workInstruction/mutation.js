@@ -7,5 +7,11 @@ export const mutations = {
         state.tableColumns = tableColumns[0].tableColumns;
         state.detailTableColumns = tableColumns[0].detailTableColumns;
     },
+    SET_WORK_ORDER_LIST(state, workOrderListItem) {
+        state.workOrderListItem=workOrderListItem;
+    },
+    SET_PRODUCTION_PERFORMANCE_INFO_LIST(state, productionPerformanceInfoListItem) {
+        state.workPerformanceManagementListItem=productionPerformanceInfoListItem
+    }
 };
 export default mutations;
