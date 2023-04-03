@@ -89,6 +89,16 @@ function fetchAccountControllCode() {
   return accountApi.get('/base/accountControllerCodes')
 }
 
+/**
+ * 거래처조회
+ */
+function searchCustomerInfoList() {
+  return accountApi.get('/base/customers')
+}
+
+// function deleteCustomerCode(){
+//   return accountApi.
+// }
 export {
-  fetchAccountCode, fetchAccountCustomerCode, fetchAccountControllCode, fetchAccountLedger, fetchGeneralAccountLedger, fetchAccountCodeList, deleteAccountCode, addAccountCode,
+  fetchAccountCode, fetchAccountCustomerCode, fetchAccountControllCode, fetchAccountLedger, fetchGeneralAccountLedger, fetchAccountCodeList, deleteAccountCode, addAccountCode, searchCustomerInfoList,
 }
