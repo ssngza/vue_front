@@ -30,20 +30,20 @@ const actions: ActionTree<WorkInstruction, Object> = {
     }
   },
 
-  async SEARCH_WORK_ORDER_LIST({ commit }) {
-    console.log("씨발거ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ")
-    /*try {
+  async SEARCH_WORK_ORDER_LIST({ commit }){
+    try {
       const { data } = await searchWorkOrderList()
-      //commit('SET_SEARCH_MPS_LIST', data.result.data.gridRowJson)
-      return data
+      console.log("좀찍혀라;;;")
+      console.log('이거',data)
+      commit('SET_WORK_ORDER_LIST', data.gridRowJson)
+     // return null
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message)
       }
       return null
-    }*/
-  },
-
+    }
+  }
 
 }
 
