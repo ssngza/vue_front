@@ -8,10 +8,13 @@ function searchContract(date) {
 
     console.log(date)
     const {
-        startDate, endDate
+        searchDateCondition
+        ,startDate
+        ,endDate
     } = date
     return logiApi.get('/outsourc/searchOderableList', {
         params: {
+            searchDateCondition,
             startDate,
             endDate,
         },

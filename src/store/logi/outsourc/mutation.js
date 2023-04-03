@@ -15,8 +15,9 @@ export default {
     },
 
     setGrid(state, gridRow) {
-        state.detailGrid = []
-        state.grid = gridRow
+        state.outsourceGrid=gridRow
+        // state.detailGrid = []
+        // state.grid = gridRow
     },
     setDetailGrid(state, gridRow) {
         state.detailGrid = gridRow

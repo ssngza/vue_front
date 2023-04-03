@@ -18,22 +18,25 @@
         >
           외주 발주 등록
         </b-button>
-        <b-radio
-            style="float: right"
+    <div>
+      <b-form-radio-group
+          v-model="selected"
+          :options="options"
+          class="mb-3"
+          value-field="item"
+          text-field="name"
+          disabled-field="notEnabled"
+          style="float: right"
           v-ripple.400="'rgba(113, 102, 240, 0.15)'"
           variant="outline-primary"
-          @click="OptionOrderOpen"
-        >
-          발주/작업지시 기한
-        </b-radio>
-        <b-radio
-            style="float: right"
-            v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-          variant="outline-primary"
-          @click="selectAllRows"
-        >
-          발주/작업지시 완료기한
-        </b-radio>
+      >
+
+
+        <div class="mt-3">Selected: {{ selected }}</div>
+        <b-form-radio v-model="selected" name="some-radios" value="CLAIM_DATE">발주/작업지시 기한</b-form-radio>
+        <b-form-radio v-model="selected" name="some-radios" value="DUE_DATE">발주/작업지시 완료기한</b-form-radio>
+      </b-form-radio-group>
+    </div>
 
       <div
         style="margin: 0 0 10px 0; float:right;"
@@ -102,6 +105,7 @@ export default {
       startDate: null,
       endDate: null,
       fields: orderList,
+      selected: '',
     }
   },
   computed: {
