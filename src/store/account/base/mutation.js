@@ -51,5 +51,21 @@ export default {
   CLEAR_GENERAL_ACCOUNT_LEDGER(state) {
     state.generalAccountLedgerList = []
   },
+  /**
+   * 거래처조회
+   */
+  SEARCH_CUSTOMER_INFO(state, customerList){
+    state.customerList = customerList
+  },
+  setGrid(state, gridRow) {
+    state.grid = gridRow
+  },
+  setTable(state, tableColumns) {
+    state.tableColumns = tableColumns[0].tableColumns
+  },
+
+  DELETE_CUSTOMER_CODE(state, customerCode){
+    state.customerCode = customerCode
+  }
 
 }
