@@ -9,6 +9,9 @@ export const mutations = {
     },
     SET_WORK_ORDER_LIST(state, workOrderListItem) {
         state.workOrderListItem=workOrderListItem;
+    },
+    SET_PRODUCTION_PERFORMANCE_INFO_LIST(state, productionPerformanceInfoListItem) {
+        state.workPerformanceManagementListItem=productionPerformanceInfoListItem
     }
 };
 export default mutations;

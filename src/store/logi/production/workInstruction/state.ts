@@ -11,6 +11,7 @@ export class WorkInstruction {
   public detailTableColumns: Object[] = [];
 
   public workOrderListItem: Object[] = [];
+  public workPerformanceManagementListItem: Object[] = [];
 }
 
 const Production: Module<WorkInstruction, Object> = {

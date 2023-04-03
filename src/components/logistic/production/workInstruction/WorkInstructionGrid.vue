@@ -34,7 +34,7 @@
             empty-text="No matching records found"
             :select-mode="'single'"
             :fields="workOrderList"
-            :items="this.workOrderListItem"
+            :items="workOrderListItem"
         />
       </div>
 

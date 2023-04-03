@@ -8,6 +8,7 @@ export class WorkInstruction {
         this.tableColumns = [];
         this.detailTableColumns = [];
         this.workOrderListItem = [];
+        this.workPerformanceManagementListItem = [];
     }
 }
 const Production = {
