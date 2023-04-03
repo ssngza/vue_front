@@ -114,5 +114,6 @@ export {
   gatherResultRegist,
   searchMrpGathering,
   showWorkInfoList,
-  searchWorkOrderList
+  searchWorkOrderList,
+  productionPerformanceInfoList
 }

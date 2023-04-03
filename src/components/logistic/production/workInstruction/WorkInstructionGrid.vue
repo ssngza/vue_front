@@ -1,5 +1,5 @@
 <template>
-
+  <component :is="'b-card'">
   <!-- Table Container Card -->
   <b-card
     no-body
@@ -29,10 +29,12 @@
             class="editable-table"
             hover
             selectable
+            :sticky-header="true"
             show-empty
             empty-text="No matching records found"
             :select-mode="'single'"
             :fields="workOrderList"
+            :items="workOrderListItem"
         />
       </div>
 
@@ -98,7 +100,7 @@
       <b-row />
     </div>
   </b-card>
-
+  </component>
 </template>
 
 <script>
@@ -115,6 +117,7 @@ import CommonModal from '@/components/common/modal/CommonModal'
 import useInvoicesList from '@/components/logistic/sales/contract/contractInfoGrid/GridOption'
 import {workOrderList} from "@/components/logistic/production/fields";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
+import Ripple from "vue-ripple-directive";
 
 export default {
   components: {
@@ -154,6 +157,9 @@ export default {
   },
   watch: {
   },
+  directives: {
+    Ripple,
+  },
   data: () => ({
     selected: '',
     selectMode: 'single',
@@ -176,7 +182,8 @@ export default {
         this.alert('조회 성공')
       }*/
       console.log("안해 시발")
-      this.$store.dispatch('logi/workInstruction/SEARCH_WORK_ORDER_LIST')
+      this.SEARCH_WORK_ORDER_LIST()
+     // this.$store.dispatch('logi/workInstruction/SEARCH_WORK_ORDER_LIST')
     },
     onRowSelected(items) {
       console.log(items[0].contractDetailTOList)
@@ -281,7 +288,7 @@ export default {
 
 <style lang="scss">
   @import 'src/@core/scss/vue/libs/vue-select';
-
+  @import '@core/scss/vue/libs/vue-flatpicker.scss';
   .scrollStyle::-webkit-scrollbar-track
   {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);

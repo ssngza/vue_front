@@ -27,5 +27,18 @@ const actions = {
             }
         });
     },
+    async SEARCH_WORK_ORDER_LIST({ commit }){
+        try {
+            //const { data } = await searchWorkOrderList()
+            console.log("좀찍혀라;;;");
+            //commit('SET_WORK_ORDER_LIST', data)
+            return null
+        } catch (err) {
+            if (err instanceof Error) {
+                throw new Error(err.message)
+            }
+            return null
+        }
+    }
 };
 export default actions;

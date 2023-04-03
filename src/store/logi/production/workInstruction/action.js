@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 // @ts-ignore
-import { showWorkInfoList } from '@/api/logi/production.js';
+import {searchMpsList, searchWorkOrderList, showWorkInfoList, productionPerformanceInfoList } from '@/api/logi/production.js';
 const actions = {
     setTable(state, tableColumns) {
         state.commit('SET_TABLE', tableColumns);
@@ -34,5 +34,40 @@ const actions = {
             }
         });
     },
+    SEARCH_WORK_ORDER_LIST({ commit }, payload) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data } = yield searchWorkOrderList();
+               // commit('SET_SEARCH_MPS_LIST', data.result.data.gridRowJson);
+                commit('SET_WORK_ORDER_LIST', data.gridRowJson)
+                console.log("이거도댐??",data);
+                console.log("이거도댐??",data.gridRowJson);
+                return data;
+            }
+            catch (err) {
+                if (err instanceof Error) {
+                    throw new Error(err.message);
+                }
+                return null;
+            }
+        });
+    },
+    SEARCH_PRODUCTION_PERFORMANCE_INFO_LIST({ commit } ) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data } = yield productionPerformanceInfoList();
+                commit('SET_PRODUCTION_PERFORMANCE_INFO_LIST', data.gridRowJson)
+                console.log('나와랍!!',data);
+              //  return null;
+            }
+            catch (err) {
+                if (err instanceof Error) {
+                    throw new Error(err.message);
+                }
+                return null;
+            }
+        });
+    },
+
 };
 export default actions;

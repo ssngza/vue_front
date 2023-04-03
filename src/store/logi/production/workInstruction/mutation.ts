@@ -13,6 +13,9 @@ export const mutations: MutationTree<WorkInstruction> = {
   },
   SET_WORK_ORDER_LIST(state, workOrderListItem) {
     state.workOrderListItem=workOrderListItem
+  },
+  SET_PRODUCTION_PERFORMANCE_INFO_LIST(state, productionPerformanceInfoListItem) {
+    state.workPerformanceManagementListItem=productionPerformanceInfoListItem
   }
 }
 
