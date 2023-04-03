@@ -8,6 +8,8 @@ export default {
         console.log(payload)
         try {
             const res = await searchContract(payload)
+            console.log("데이터확인")
+            console.log(res)
             const gridRow = res.data.gridRowJson
             commit('setGrid', gridRow)
 
