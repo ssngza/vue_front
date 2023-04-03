@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <div  style="margin: 30px 0 0 -14px; width: 550px; display: flex">
 
@@ -56,7 +55,6 @@
         class="mb-0 scrollStyle"
     />
     <!--    수정하기-->
-
   </div>
 </template>
 
@@ -65,6 +63,7 @@ import {BButton, BButtonGroup, BTable} from 'bootstrap-vue'
 import { mapState } from 'vuex'
 
 export default {
+  name: 'Regist',
   components: {
     BTable,
     BButton,
@@ -77,54 +76,19 @@ export default {
   data() {
     return {
       fields: [
-        {
-          key: 'NO',
-          label: 'NO',
-          sortable: 'true',
-        },
-        {
-          key: 'itemClassificationName',
-          label: '품목구분',
-        },
-        {
-          key: 'itemCode',
-          label: '품목코드',
-        },
-        {
-          key: 'itemName',
-          label: '품목명',
-        },
-        {
-          key: 'netAmount',
-          label: '정미수량',
-        },
-        {
-          key: 'description',
-          label: '설명',
-        },
-        {
-          key: 'status',
-          label: 'status',
-        },
-        {
-          key: 'itemClassification',
-          label: 'itemClassification',
-        },
-        {
-          key: 'parentItemCode',
-          label: 'parentItemCode',
-        },
-        {
-          key: 'beforeStatus',
-          label: 'beforeStatus',
-        },
-        {
-          key: 'deleteStatus',
-          label: 'deleteStatus',
-        },
+        {key: 'NO', label: 'NO', sortable: 'true',},
+        {key: 'itemClassificationName', label: '품목구분',},
+        {key: 'itemCode', label: '품목코드',},
+        {key: 'itemName', label: '품목명',},
+        {key: 'netAmount', label: '정미수량',},
+        {key: 'description', label: '설명',},
+        {key: 'status', label: 'status',},
+        {key: 'itemClassification', label: 'itemClassification',},
+        {key: 'parentItemCode', label: 'parentItemCode',},
+        {key: 'beforeStatus', label: 'beforeStatus',},
+        {key: 'deleteStatus', label: 'deleteStatus',},
       ],
     }
   },
 }
-
 </script>
