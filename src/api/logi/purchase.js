@@ -18,12 +18,11 @@ function searchOrderList(payload) {
 }
 
 function searchItemCodeList(payload) {
-  
-  console.log("확인용")
-  console.log(payload)
+
+  console.log("searchItemCodeList실행")
   return sys.get('/findPayStepCodeDetailList', {
     params: {
-      divisionCode: payload, //품목코드보내기
+      itemClassificationCondition: payload,
     },
   })
 }
