@@ -76,6 +76,7 @@ export const mrpInfoList = [
 ]
 
 export const workOrderList =[
+  { label: '소요량전개번호',key: 'mrpNo' },
   { label: '소요량취합번호',key: 'mrpGatheringNo' },
   { label: '품목분류', key: 'itemClassification' },
   { label: '품목코드', key: 'itemCode' },
@@ -114,4 +115,18 @@ export const workPerformanceManagementList=[
   { label: '작업지시수량', key: 'workOrderAmount' },
   { label: '실제제작수량', key: 'actualCompletionAmount'},
   { label: '공정성공율', key: 'workSuccessRate' }
+]
+
+export const workOrderSimultaion = [
+  {label: "소요량취합번호", key: "mrpGatheringNo"},
+  {label: "소요량전개번호", key: "mrpNo"},
+  {label: '품목분류', key: 'itemClassification'},
+  {label: '품목코드', key: 'itemCode'},
+  {label: '품목명', key: 'itemName'},
+  {label: '단위', key: 'unitOfMrp'},
+  {label: '재고량(투입예정재고)', key: 'inputAmount' },
+  {label: '재고소요/제작수량', key: 'requiredAmount'},
+  {label: '재고량(재고소요이후)', key: 'stockAfterWork'},
+  {label: '작업지시기한', key: 'orderDate' },
+  {label: '작업완료기한', key: 'requiredDate'}
 ]

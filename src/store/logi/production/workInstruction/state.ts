@@ -12,6 +12,7 @@ export class WorkInstruction {
 
   public workOrderListItem: Object[] = [];
   public workPerformanceManagementListItem: Object[] = [];
+  public workOrderDialog: Object[] = [];
 }
 
 const Production: Module<WorkInstruction, Object> = {

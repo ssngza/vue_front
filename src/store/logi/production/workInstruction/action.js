@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 // @ts-ignore
-import {searchMpsList, searchWorkOrderList, showWorkInfoList, productionPerformanceInfoList } from '@/api/logi/production.js';
+import {searchMpsList, searchWorkOrderList, showWorkInfoList, productionPerformanceInfoList,showWorkOrderDialog } from '@/api/logi/production.js';
 const actions = {
     setTable(state, tableColumns) {
         state.commit('SET_TABLE', tableColumns);
@@ -46,7 +46,7 @@ const actions = {
             }
             catch (err) {
                 if (err instanceof Error) {
-                    throw new Error(err.message);
+                    throw new Error(err.messages);
                 }
                 return null;
             }
@@ -59,6 +59,23 @@ const actions = {
                 commit('SET_PRODUCTION_PERFORMANCE_INFO_LIST', data.gridRowJson)
                 console.log('나와랍!!',data);
               //  return null;
+            }
+            catch (err) {
+                if (err instanceof Error) {
+                    throw new Error(err.message);
+                }
+                return null;
+            }
+        });
+    },
+
+    SHOW_WORK_ORDER_DIALOG({ commit }, payload) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data } = yield showWorkOrderDialog(payload);
+                console.log('모의 액션실행됨?',payload);
+                console.log('뒷단에서 어떤형태임',data);
+                commit('SET_WORK_ORDER_DIALOG', data.result);
             }
             catch (err) {
                 if (err instanceof Error) {

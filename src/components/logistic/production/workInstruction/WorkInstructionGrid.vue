@@ -18,11 +18,40 @@
         작업지시 필요항목 조회
       </b-button>
       <b-button
-          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+          v-b-modal.workOrderModal
+          v-ripple.400="'rgba(113, 102, 240, 0.15)'"치
           variant="outline-primary"
+          @click="searchWorkOrderSimultaion"
       >
         작업지시 모의 전개
       </b-button>
+
+      <b-modal
+          v-if="this.mrpNo"
+          id="workOrderModal"
+          title="workOrder"
+          size="xl"
+          cancel-variant="outline-secondary"
+      >
+        <b-card
+            class="scrollStyle"
+            style="margin:auto; overflow-y: scroll;  height: 50vh; padding-left: 10px"
+        >
+
+          <b-table
+              class="editable-table"
+              hover
+              selectable
+              :sticky-header="true"
+              show-empty
+              empty-text="No matching records found"
+              :select-mode="'single'"
+              :fields="workOrderSimultaion"
+              :items="workOrderDialog"
+          />
+        </b-card>
+      </b-modal>
+
 
       <div style="margin-top: 30px">
         <b-table
@@ -35,6 +64,7 @@
             :select-mode="'single'"
             :fields="workOrderList"
             :items="workOrderListItem"
+            @row-clicked="mrpNoClick"
         />
       </div>
 
@@ -115,7 +145,7 @@ import store from '@/store'
 import {mapActions, mapState} from 'vuex'
 import CommonModal from '@/components/common/modal/CommonModal'
 import useInvoicesList from '@/components/logistic/sales/contract/contractInfoGrid/GridOption'
-import {workOrderList} from "@/components/logistic/production/fields";
+import {workOrderList,  workOrderSimultaion} from "@/components/logistic/production/fields";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
 
@@ -151,7 +181,8 @@ export default {
       tableColumns: state => state.logi.sales.tableColumns,
       grid: state => state.logi.sales.grid,
       detailGrid: state => state.logi.sales.detailGrid,
-      workOrderListItem: state => state.logi.workInstruction.workOrderListItem
+      workOrderListItem: state => state.logi.workInstruction.workOrderListItem,
+      workOrderDialog: state => state.logi.workInstruction.workOrderDialog
     }),
 /*    ...mapState('logi/workInstruction', ['workOrderListItem', 'workOrderListItem']),*/
   },
@@ -163,27 +194,38 @@ export default {
   data: () => ({
     selected: '',
     selectMode: 'single',
-    modal: false,
     contractTypeNameOption: [
       { value: 'CT-01', text: 'CT-01 | 수주일반' },
       { value: 'CT-02', text: 'CT-02 | 긴급수주' },
     ],
     workOrderList
+    ,workOrderSimultaion
+    ,mrpNo:''
+    ,mrpGatheringNo:''
+    ,workOrderModal: false
   }),
   methods: {
-    ...mapActions('logi/workInstruction', ['SEARCH_WORK_ORDER_LIST']),
+    ...mapActions('logi/workInstruction', ['SEARCH_WORK_ORDER_LIST','SHOW_WORK_ORDER_DIALOG']),
     searchWorkOrder() {
-/*      if (this.rangeDate === null) {
-        throw new Error('신청일자 선택하셈.')
-      } else {
-        this.extractDate()
-        const payload = { startDate: this.startDate, endDate: this.endDate }
-        this.SEARCH_MPS_LIST(payload)
-        this.alert('조회 성공')
-      }*/
-      console.log("안해 시발")
       this.SEARCH_WORK_ORDER_LIST()
-     // this.$store.dispatch('logi/workInstruction/SEARCH_WORK_ORDER_LIST')
+      //this.$store.dispatch('logi/workInstruction/SEARCH_WORK_ORDER_LIST')
+    },
+    mrpNoClick(payload) {
+      console.log('mrpNo이벤트')
+      console.log(payload)
+      this.mrpNo = payload.mrpNo
+      this.mrpGatheringNo = payload.mrpGatheringNo
+    },
+    searchWorkOrderSimultaion(){
+      console.log('엠알피노',this.mrpNo)
+      const sendData={
+        mrpNo: this.mrpNo, mrpGatheringNo: this.mrpGatheringNo
+      }
+      if(!this.mrpNo){
+        alert("행을 선택해주십시오")
+        return;
+      }
+    this.SHOW_WORK_ORDER_DIALOG(sendData)
     },
     onRowSelected(items) {
       console.log(items[0].contractDetailTOList)
@@ -299,7 +341,7 @@ export default {
 
   .scrollStyle::-webkit-scrollbar
   {
-    width: 10px;
+    width: 50px;
     background-color: rgba(50,50,150,0);
   }
 
