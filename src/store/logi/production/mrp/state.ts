@@ -9,6 +9,7 @@ export class Mrp {
     public mrpResultList: Object[] = [];
     public mrpNoAndItemCodeList: Object = Object
     public searchMrpGatheringList: Object = [];
+
 }
 
 const Production: Module<Mrp, Object> = {

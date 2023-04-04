@@ -12,6 +12,9 @@ export const mutations = {
     },
     SET_PRODUCTION_PERFORMANCE_INFO_LIST(state, productionPerformanceInfoListItem) {
         state.workPerformanceManagementListItem=productionPerformanceInfoListItem
+    },
+    SET_WORK_ORDER_DIALOG(state,workOrderDialog){
+        state.workOrderDialog=workOrderDialog
     }
 };
 export default mutations;
