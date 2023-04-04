@@ -1,6 +1,6 @@
 import { ActionContext, ActionTree } from 'vuex'
 // @ts-ignore
-import { showWorkInfoList, searchWorkOrderList, productionPerformanceInfoList } from '@/api/logi/production.js'
+import { showWorkInfoList, searchWorkOrderList, productionPerformanceInfoList, showWorkOrderDialog } from '@/api/logi/production.js'
 import { WorkInstruction } from '@/store/logi/production/workInstruction/state'
 
 const actions: ActionTree<WorkInstruction, Object> = {
@@ -51,6 +51,21 @@ const actions: ActionTree<WorkInstruction, Object> = {
       console.log("나와랍!!!")
       console.log('이거',data)
        commit('SET_PRODUCTION_PERFORMANCE_INFO_LIST', data.gridRowJson)
+      // return data
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message)
+      }
+      return null
+    }
+  },
+
+  async SHOW_WORK_ORDER_DIALOG({ commit },payload){
+    try {
+      const { data } = await showWorkOrderDialog(payload)
+      console.log("나와랍!!!")
+      //commit('SET_PRODUCTION_PERFORMANCE_INFO_LIST', data.gridRowJson)
+      commit('SET_WORK_ORDER_DIALOG', data.result);
       // return data
     } catch (err) {
       if (err instanceof Error) {
