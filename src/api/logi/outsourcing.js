@@ -19,9 +19,12 @@ function searchContract(date) {
             endDate,
         },
     })
+}
+function insertOutsource(payload) {
 
-
+    console.log(payload)
+    return logiApi.post('/outsourc/insertOutsourc', payload)
 }
 export {
-    searchContract
+    searchContract, insertOutsource
 }

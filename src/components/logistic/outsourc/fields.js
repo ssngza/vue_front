@@ -1,4 +1,5 @@
 export const orderList = [
+  { key: 'checkbox', label: 'checkbox',selected:false },
   { key: 'mrpGatheringNo', label: 'MRP 취합 번호' },
   { key: 'orderOrProductionStatus', label: '구매 및 생산여부' },
   { key: 'itemCode', label: '품목코드' },

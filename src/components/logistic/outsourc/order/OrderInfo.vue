@@ -120,7 +120,7 @@ export default {
     ...mapState('logi/outsource', ['outsourceGrid']),
   },
   methods: {
-    ...mapActions('logi/order', ['SEARCH_ORDER_LIST']),
+    ...mapActions('logi/outsource', ['searchOutsourcInfoList']),
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()
     },
@@ -143,7 +143,7 @@ export default {
       } else {
         this.extractDate()
         const date = { startDate: this.startDate, endDate: this.endDate }
-        this.SEARCH_ORDER_LIST(date)
+        this.searchOutsourcInfoList(date)
       }
     },
     OrderOpen() {

@@ -54,16 +54,19 @@
         </b-col>
       </div>
       <div>
+
         <b-table
           ref="selectableTable"
-          :items="this.orderList"
+          :items="outsourceGrid"
           class="editable-tabdle"
           hover
           selectable
           :select-mode="'multi'"
           :fields="fields"
+
           @row-selected="handleInput"
-        />
+          >
+        </b-table>
       </div>
   </div>
 </template>
@@ -106,13 +109,16 @@ export default {
       endDate: null,
       fields: orderList,
       selected: '',
+      insertData:[],
     }
   },
   computed: {
-    ...mapState('logi/order', ['orderList']),
+    //...mapState('logi/order', ['orderList']),
+    ...mapState('logi/outsource', ['outsourceGrid']),
   },
   methods: {
-    ...mapActions('logi/order', ['SEARCH_ORDER_LIST']),
+    //...mapActions('logi/order', ['SEARCH_ORDER_LIST']),
+    ...mapActions('logi/outsource', ['searchOutsourcInfoList', 'insertOutsourcList']),
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()
     },
@@ -124,26 +130,41 @@ export default {
       this.endDate = this.rangeDate.split('to')[1].trim()
     },
     handleInput(payload) {
-      this.contractDetail = payload
+      this.insertData = [];
+      console.log("로우클릭이벤트")
+      console.log(payload)
+      this.insertData = payload;
     },
     searchOrderList() {
       console.log('재고처리/발주필요 목록조회')
       if (this.rangeDate === null) {
         throw new Error('날짜입력')
-      } else if (this.startDate === null || this.endDate === null) {
-        throw new Error('날짜 범위 선택')
-      } else {
+      }
+
+        else {
         this.extractDate()
-        const date = { startDate: this.startDate, endDate: this.endDate }
-        this.SEARCH_ORDER_LIST(date)
+        const date = { startDate: this.startDate, endDate: this.endDate, searchDateCondition:this.selected }
+        console.log(date)
+        this.searchOutsourcInfoList(date)
       }
     },
     OrderOpen() {
-      console.log('모의재고처리 및 취합발주')
+      console.log('등록버튼')
+      console.log(this.insertData)
+      const insertData = Array.from(this.insertData)
+      console.log("여기확인")
+      console.log(insertData)
+      this.insertOutsourcList(insertData)
+
     },
     OptionOrderOpen() {
       console.log('임의발주')
     },
+    onPreviewClick(value, index, item) {
+      // value == value of checkbox (ie. true or false, or whatever is stored in v-model)
+      // index == visual index of row (i.e. the index of the row wrt the displayed rows)
+      // item == the clicked row item data
+    }
   },
 }
 </script>
