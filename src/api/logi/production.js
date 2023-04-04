@@ -103,6 +103,14 @@ function productionPerformanceInfoList(){
   return logiApi.get('/production/getProductionPerformanceInfoList')
 }
 
+function showWorkOrderDialog(payload){
+  return logiApi.get('/production/showWorkOrderDialog',{
+    params: {
+      mrpNo: payload.mrpNo,
+      mrpGatheringNo: payload.mrpGatheringNo,
+    },
+  })
+}
 export {
   searchContractDetailInMpsAvailable,
   convertContractDetailToMps,
@@ -115,5 +123,6 @@ export {
   searchMrpGathering,
   showWorkInfoList,
   searchWorkOrderList,
-  productionPerformanceInfoList
+  productionPerformanceInfoList,
+  showWorkOrderDialog
 }
