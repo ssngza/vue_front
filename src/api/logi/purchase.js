@@ -19,11 +19,38 @@ function searchOrderList(payload) {
 
 function searchItemCodeList(payload) {
 
-  console.log("확인용")
-  console.log(payload)
+  console.log("searchItemCodeList실행")
   return sys.get('/findPayStepCodeDetailList', {
     params: {
-      divisionCode: payload, //품목코드보내기
+      itemClassificationCondition: payload,
+    },
+  })
+}
+
+function searchBomList(payload) {
+  console.log("searchBomList실행")
+  const {
+    itemClassificationCondition,
+    deployCondition,
+    itemCode,
+  } = payload
+  return logiApi.get('/purchase/searchBomDeploy', {
+    params: {
+      itemClassificationCondition,
+      deployCondition,
+      itemCode,
+    },
+  })
+}
+
+function searchRegistBomList(payload) {
+  console.log("searchRegistBomList실행")
+  const {
+    parentItemCode,
+  } = payload
+  return logiApi.get('/purchase/searchBomInfo', {
+    params: {
+      parentItemCode,
     },
   })
 }
@@ -32,4 +59,6 @@ export {
   // eslint-disable-next-line import/prefer-default-export
   searchOrderList,
   searchItemCodeList,
+  searchBomList,
+  searchRegistBomList,
 }
