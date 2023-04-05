@@ -1,7 +1,5 @@
 <template>
-
   <component :is="'b-card'">
-
     <b-tabs pills>
       <b-tab
           active
@@ -14,7 +12,7 @@
           />
           <span class="d-none d-sm-inline">BOM 정전개/역전개</span>
         </template>
-        <!--  내용물 컴포넌트       -->
+        <!-- 내용물 컴포넌트 -->
         <Deploy /> <!--가져온 vue 객체의 태그를 선언-->
       </b-tab>
 
@@ -27,17 +25,14 @@
           />
           <span class="d-none d-sm-inline">BOM 등록/수정</span>
         </template>
-        <!--  내용물 컴포넌트       -->
+        <!-- 내용물 컴포넌트 -->
         <Regist/>
       </b-tab>
-
     </b-tabs>
   </component>
-
 </template>
 
 <script>
-
 import {
   BTab, BTabs, BCard,
 } from 'bootstrap-vue'
@@ -55,7 +50,6 @@ export default {
     BCard,
   },
 }
-
 </script>
 
 <style  lang="scss">
