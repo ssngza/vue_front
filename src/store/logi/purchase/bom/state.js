@@ -5,6 +5,8 @@ export default {
     namespaced: true,
     state: {
         itemCodeList: [],
+        bomList: [],
+        bomRegistList: [],
     },
     getters: {
     },
