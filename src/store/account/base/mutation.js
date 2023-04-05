@@ -64,8 +64,9 @@ export default {
     state.tableColumns = tableColumns[0].tableColumns
   },
 
-  DELETE_CUSTOMER_CODE(state, customerCode){
-    state.customerCode = customerCode
+  DELETE_CUSTOMER_CODE(state,customerCode){
+    console.log('뮤테이션삭제',state.customerCode)
+    state.customerCode = state.customerCode.filter((item)=>item.customerCode !== customerCode);
   }
 
 }
