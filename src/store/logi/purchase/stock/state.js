@@ -4,14 +4,13 @@ import actions from './action'
 export default {
     namespaced: true,
     state: {
-        itemCodeList: [],
-        bomList: [],
-        bomRegistList: [],
+        stockAmountDetailList:[],
+
     },
-    getters: {
-    },
+    getters: {},
 
     mutations,
+
     actions,
 
 }
