@@ -1,18 +1,18 @@
 <template>
-<div>
-  <CustomerGrid
-    grid-type="grid"
-    :buttonlist="buttonList"
-    title="거래처관리"
-    column-width="3000px"
-    only-one="true"
-    @row-selected="showGridData"
-    @find-data="getGridData"
-    @input-modal="gridInputModal"
-    @regist-data="registData"
-    @delete-data="deleteData"
-  />
-</div>
+  <div>
+    <CustomerGrid
+        grid-type="grid"
+        :buttonlist="buttonList"
+        title="거래처관리"
+        column-width="3000px"
+        only-one="true"
+        @row-selected="showGridData"
+        @find-data="getGridData"
+        @input-modal="gridInputModal"
+        @regist-data="registData"
+        @delete-data="deleteData"
+    />
+  </div>
 </template>
 
 <script>
@@ -53,10 +53,18 @@ export default {
   computed: {
     ...mapState({
       grid: state=>state.grid,
-
+      customerList: state => state.account.base.customerList,
     })
   },
   data: ()=>({
+    customerCode: '',
+    workplaceCode:'',
+    customerName:'',
+    customerCeo:'',
+    businessLicenseNumber:'',
+    customerBusinessConditions:'',
+    customerBusinessItems:'',
+    customerBasicAddress:'',
     selected: '',
     buttonList:[
       {
@@ -78,6 +86,11 @@ export default {
     ]
   }),
   created() {
+    let dataList=[]
+    this.customerList.map(e=>{
+      const {customerCode}=e
+      dataList.push({ text: customerCode, value: customerCode})
+    })
     const tableColumns=[{
       tableColumns:[
         {
@@ -118,12 +131,13 @@ export default {
       console.log("getGridData")
       this.$store.dispatch('account/base/SEARCH_CUSTOMER_INFO_LIST')
     },
-    deleteData(){
+    deleteData(customerCode){
       console.log("deleteData")
-      this.$store.dispatch('account/base/DELETE_CUSTOMER_CODE')
+      console.log('de;eteData2',customerCode)
+      this.$store.dispatch('account/base/DELETE_CUSTOMER_CODE', customerCode)
     },
-    gridInputModal(){
-
+    async gridInputModal(rowData){
+      // await this.$store.dispatch('account/base/GET_CUSTOMER_LIST',rowData[0].item)
     },
     async registData(){
 
