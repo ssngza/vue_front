@@ -6,7 +6,7 @@ import {
   fetchGeneralAccountLedger,
   fetchAccountCodeList,
   deleteAccountCode,
-  addAccountCode, searchCustomerInfoList,
+  addAccountCode, searchCustomerInfoList, deleteCustomerCode,
 } from '@/api/account/base'
 
 export default {
@@ -131,9 +131,10 @@ export default {
     }
   },
 
-  async DELETE_CUSTOMER_CODE({commit}){
+  async DELETE_CUSTOMER_CODE({commit}, customerCode){
     try {
-      const {data} = await deleteCustomerCode()
+      console.log('커스터머코드',customerCode)
+      const {data} = await deleteCustomerCode(customerCode)
       commit('DELETE_CUSTOMER_CODE',data.customerCode)
       return data
     } catch (err){
