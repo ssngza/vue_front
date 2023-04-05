@@ -16,6 +16,19 @@ function getStandardUnitPrice(itemCode) {
     },
   })
 }
+
+
+function getWarehouseList() {
+  console.log("getWarehouseList")
+  return logiApi.get('/base/warehouseInfo')
+}
+
+function getWarehouseDetailList(warehouseCode) {
+  console.log(warehouseCode)
+  return logiApi.get('/purchase/warehouseStockList',warehouseCode)
+}
+
+
 export {
-  searchItem, getStandardUnitPrice,
+  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList
 }
