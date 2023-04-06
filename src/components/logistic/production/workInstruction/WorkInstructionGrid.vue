@@ -207,8 +207,8 @@ export default {
   methods: {
     ...mapActions('logi/workInstruction', ['SEARCH_WORK_ORDER_LIST','SHOW_WORK_ORDER_DIALOG']),
     searchWorkOrder() {
-      this.SEARCH_WORK_ORDER_LIST()
-      //this.$store.dispatch('logi/workInstruction/SEARCH_WORK_ORDER_LIST')
+     this.SEARCH_WORK_ORDER_LIST()
+     // this.$store.dispatch('logi/workInstruction/SEARCH_WORK_ORDER_LIST')
     },
     mrpNoClick(payload) {
       console.log('mrpNo이벤트')
