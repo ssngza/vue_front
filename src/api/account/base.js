@@ -106,7 +106,7 @@ function deleteCustomerCode(customerCode){
 function saveCustomer(newCustomer){
     console.log("api  : ")
     console.log(newCustomer)
-    return accountApi.post('/base/batchCustormerProcess',newCustomer)
+    return accountApi.post('/base/saveNewCustomer',newCustomer)
 }
 
 export {
