@@ -32,10 +32,10 @@ const actions: ActionTree<WorkInstruction, Object> = {
 
   async SEARCH_WORK_ORDER_LIST({ commit }){
     try {
-      const { data } = await searchWorkOrderList()
+      const { data } = await searchWorkOrderList() // 뒤단 요청해서 데이터 받음
       console.log("좀찍혀라;;;")
       console.log('이거',data)
-      commit('SET_WORK_ORDER_LIST', data.gridRowJson)
+      commit('SET_WORK_ORDER_LIST', data.gridRowJson) // commit
      // return null
     } catch (err) {
       if (err instanceof Error) {

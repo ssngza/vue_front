@@ -66,6 +66,7 @@ export default {
     customerBusinessItems:'',
     customerBasicAddress:'',
     selected: '',
+    selectData:[],
     buttonList:[
       {
         value: '조회',
@@ -124,8 +125,10 @@ export default {
 
   },
   methods: {
-    showGridData(val){
-      console.log(val)
+    showGridData(selectData){
+      console.log(selectData)
+      this.selectData=selectData[0]
+      console.log('클릭하고',selectData)
     },
     getGridData(){
       console.log("getGridData")
@@ -140,7 +143,9 @@ export default {
       // await this.$store.dispatch('account/base/GET_CUSTOMER_LIST',rowData[0].item)
     },
     async registData(){
-
+      console.log("폼에서 저장버튼")
+      console.log(this.selectData)
+      this.$store.dispatch('account/base/SAVE_CUSTOMER_CODE', this.selectData)
     }
   },
 }

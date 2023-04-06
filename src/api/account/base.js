@@ -102,6 +102,13 @@ function deleteCustomerCode(customerCode){
             params:{customerCode}
         })
 }
+
+function saveCustomer(newCustomer){
+    console.log("api  : ")
+    console.log(newCustomer)
+    return accountApi.post('/base/batchCustormerProcess',newCustomer)
+}
+
 export {
-    fetchAccountCode, fetchAccountCustomerCode, fetchAccountControllCode, fetchAccountLedger, fetchGeneralAccountLedger, fetchAccountCodeList, deleteAccountCode, addAccountCode, searchCustomerInfoList, deleteCustomerCode,
+    fetchAccountCode, fetchAccountCustomerCode, fetchAccountControllCode, fetchAccountLedger, fetchGeneralAccountLedger, fetchAccountCodeList, deleteAccountCode, addAccountCode, searchCustomerInfoList, deleteCustomerCode,saveCustomer
 }
