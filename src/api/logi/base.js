@@ -17,11 +17,16 @@ function getStandardUnitPrice(itemCode) {
   })
 }
 
-
+//창고조회
 function getWarehouseList() {
   console.log("getWarehouseList")
   return logiApi.get('/base/warehouseInfo')
 }
+//창고삭제
+function deleteWarehouseList(payload) {
+  return logiApi.post('/base/warehousebatchListProcess2', payload)
+}
+
 
 function getWarehouseDetailList(warehouseCode) {
   console.log(warehouseCode)
@@ -30,5 +35,5 @@ function getWarehouseDetailList(warehouseCode) {
 
 
 export {
-  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList
+  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList
 }

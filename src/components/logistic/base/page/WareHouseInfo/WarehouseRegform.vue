@@ -1,19 +1,3 @@
-<!--
-<template>
-
-</template>
-
-<script>
-export default {
-  name: "WarehouseRegform"
-}
-</script>
-
-<style scoped>
-
-</style>
--->
-
 <template>
   <div>
     <!-- 전표 모달 내용
@@ -34,22 +18,10 @@ export default {
 
                 disabled
             />
-<!--            <b-form-input
-                v-if="modalStatus==='addWarehouse'"
-                id="warehouseCode"
-                v-model="slipForm.accountPeriodNo"
-                disabled
-            />
-            <b-form-input
-                v-else
-                id="accountPeriodNo"
-                v-model="editSlip[0].accountPeriodNo"
-                disabled
-            />-->
           </b-form-group>
         </b-col>
-        <b-col md="12">
-          <b-form-group
+<!--        <b-col md="12">
+        <b-form-group
               label="창고사용여부"
               label-for="warehouseUseOrNot"
           >
@@ -58,9 +30,12 @@ export default {
                 v-model="WarehouseForm.warehouseUseOrNot"
                 :options="options"
             />
+        </b-col>-->
+        <b-col md="12">
+          <b-form-group label="창고사용여부" label-for="warehouseUseOrNot">
+              <b-form-radio-group v-model="WarehouseForm.warehouseUseOrNot" :options="options" />
           </b-form-group>
         </b-col>
-
         <b-col md="12">
           <b-form-group
               label="창고명"
@@ -105,6 +80,7 @@ export default {
 <script>
 import {
   BRow, BCol, BFormGroup, BFormInput, BForm, BButton, BFormSelect,
+  BFormRadioGroup,
 } from 'bootstrap-vue'
 import Ripple from 'vue-ripple-directive'
 
@@ -118,6 +94,7 @@ export default {
     BForm,
     BButton,
     BFormSelect,
+    BFormRadioGroup,
 
   },
   directives: {
@@ -126,6 +103,8 @@ export default {
   props: ['modalStatus', 'editSlip', 'editJournal','addWarehouse'],
   data() {
     return {
+      selected: '',
+
       options: [
         { value: 'Y', text: '예' },
         { value: 'N', text: '아니오' },
