@@ -1,4 +1,4 @@
-const ERP = '/hr'
+/*const ERP = '/hr'
 const insaRouter = [
   {
     path: `${ERP}/home`,
@@ -77,5 +77,5 @@ const insaRouter = [
       ],
     },
   },
-]
+]*/
 export default insaRouter
