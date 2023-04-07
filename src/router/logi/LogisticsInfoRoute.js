@@ -1,28 +1,31 @@
-// import React from 'react';
-// import { Route } from 'react-router-dom';
-//************************************************물류정보 관리 ********************************************************
-// import { default as CodeInfo } from 'erp/logistic/base/page/CodeInfo/CodeInfo'; //*****2020-11-28 이숭규 코드관리
-// import { default as ItemInfo } from 'erp/logistic/base/page/ItemInfo/ItemInfo'; //*****2020-11-28 황경윤 품목관리
-// import { default as WarehouseInfo } from 'erp/logistic/base/page/WareHouseInfo/WareHouseInfo'; //*****2020-11-28 노원찬 창고관리
-//
-// function LogisticsInfoRoute() {
-//     return (
-//         <>
-//             {/* 물류 정보 관리 */}
-//             <Route exact path="/app/logistic/base/codeInfo" component={CodeInfo} />
-//             {/*2020-11-18 이숭규 */}
-//             <Route exact path="/app/logistic/base/itemInfo" component={ItemInfo} />
-//             {/*2020-11-28 황경윤 */}
-//             <Route exact path="/app/logistic/base/wareHouseInfo" component={WarehouseInfo} />
-//         </>
-//     );
-// }
-//
-// export default LogisticsInfoRoute;
+/*import React from 'react';
+import { Route } from 'react-router-dom';
+************************************************물류정보 관리 ********************************************************
+import { default as CodeInfo } from 'erp/logistic/base/page/CodeInfo/CodeInfo'; //!*****2020-11-28 이숭규 코드관리
+import { default as ItemInfo } from 'erp/logistic/base/page/ItemInfo/ItemInfo'; //!*****2020-11-28 황경윤 품목관리
+import { default as WarehouseInfo } from 'erp/logistic/base/page/WareHouseInfo/WareHouseInfo'; //!*****2020-11-28 노원찬 창고관리
+
+function LogisticsInfoRoute() {
+    return (
+        <>
+            {/!* 물류 정보 관리 *!/}
+            <Route exact path="/app/logistic/base/codeInfo" component={CodeInfo} />
+            {/!*2020-11-18 이숭규 *!/}
+            <Route exact path="/app/logistic/base/itemInfo" component={ItemInfo} />
+            {/!*2020-11-28 황경윤 *!/}
+            <Route exact path="/app/logistic/base/wareHouseInfo" component={WarehouseInfo} />
+        </>
+    );
+}
+
+export default LogisticsInfoRoute;*/
+
+const ERP = '/logi/base'
 
 
 const LogisticsInfoRoute = [
 //물류 정보 : 코드 관리, 품목 관리, 창고 관리
+
     {
         path: '/logi/base/codeInfo',
         name: 'codeInfo',
@@ -62,52 +65,58 @@ const LogisticsInfoRoute = [
 
 
 
-
-
-    // {
-    //
-    //     path: '/logi/production/mrpRegister',
-    //     name: 'mrpRegister',
-    //     component: () => import('@/views/logistic/production/mrp/MrpRegisterPage'),
-    //     meta: {
-    //         pageTitle: '소요량전개 등록/취합',
-    //         breadcrumb: [
-    //             {
-    //                 text: '생산관리',
-    //             },
-    //             {
-    //                 text: '소요량전개/취합(MRP)',
-    //             },
-    //             {
-    //                 text: '소요량전개 등록/취합(MRP)',
-    //             },
-    //         ],
-    //     },
-    // },
-    // {
-    //     path: '/logi/production/mrpInfo',
-    //     name: 'mrpInfo',
-    //     component: () => import('@/views/logistic/production/mrp/MrpInfoPage'),
-    //     meta: {
-    //         pageTitle: '소요량전개/취합 조회',
-    //         breadcrumb: [
-    //             {
-    //                 text: '생산관리',
-    //             },
-    //             {
-    //                 text: '소요량전개/취합(MRP)',
-    //             },
-    //             {
-    //                 text: '소요량전개/취합 조회',
-    //             },
-    //         ],
-    //     },
-    // },
-    // {
-    //     path: '/logi/production/WorkInstruction',
-    //     name: 'workInstruction',
-    //     component: () => import('@/views/logistic/production/WorkInstructionPage'),
-    // },
+    {
+        path: `${ERP}/companyInfo`,
+        name: 'CompanyInfo', // 이건 navigation Route와 같음
+        component: () => import('@/views/logistic/base/baseInfo/CompanyInfoPage'),
+        meta: {
+            pageTitle: '회사 정보',
+            breadcrumb: [
+                {text: '물류 정보',},
+                {text: '기초 정보',},
+                {text: '회사 정보',active: true,},
+            ],
+        },
+    },
+    {
+        path: `${ERP}/workplaceInfo`,
+        name: 'WorkplaceInfo', // 이건 navigation Route와 같음
+        component: () => import('@/views/logistic/base/baseInfo/WorkplaceInfoPage'),
+        meta: {
+            pageTitle: '회사 정보',
+            breadcrumb: [
+                {text: '물류 정보',},
+                {text: '기초 정보',},
+                {text: '회사 정보',active: true,},
+            ],
+        },
+    },
+    {
+        path: `${ERP}/deptInfo`,
+        name: 'DeptInfo', // 이건 navigation Route와 같음
+        component: () => import('@/views/logistic/base/baseInfo/DeptInfoPage'),
+        meta: {
+            pageTitle: '회사 정보',
+            breadcrumb: [
+                {text: '물류 정보',},
+                {text: '기초 정보',},
+                {text: '회사 정보',active: true,},
+            ],
+        },
+    },
+    {
+        path: `${ERP}/clientInfo`,
+        name: 'ClientInfo', // 이건 navigation Route와 같음
+        component: () => import('@/views/logistic/base/baseInfo/ClientInfoPage'),
+        meta: {
+            pageTitle: '회사 정보',
+            breadcrumb: [
+                {text: '물류 정보',},
+                {text: '기초 정보',},
+                {text: '회사 정보',active: true,},
+            ],
+        },
+    },
 ]
 export default LogisticsInfoRoute
 

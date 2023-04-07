@@ -1,62 +1,27 @@
 <template>
   <div>
-    <b-button
-        v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-        style="float: right"
-        variant="outline-primary"
-        @click="searchOrderList"
-    >
-      외주 발주 등록 가능한 리스트 조회
-    </b-button>
-
 
     <b-button
         style="float: right"
         v-ripple.400="'rgba(113, 102, 240, 0.15)'"
         variant="outline-primary"
-        @click="OrderOpen"
+        @click="inpectionComplete"
     >
-      외주 발주 등록
+      외주 자재 검사 완료
     </b-button>
-    <div>
-      <b-form-radio-group
-          v-model="selected"
-          :options="options"
-          class="mb-3"
-          value-field="item"
-          text-field="name"
-          disabled-field="notEnabled"
-          style="float: right"
-          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-          variant="outline-primary"
-      >
 
-
-        <div class="mt-3">Selected: {{ selected }}</div>
-        <b-form-radio v-model="selected" name="some-radios" value="CLAIM_DATE">발주/작업지시 기한</b-form-radio>
-        <b-form-radio v-model="selected" name="some-radios" value="DUE_DATE">발주/작업지시 완료기한</b-form-radio>
-      </b-form-radio-group>
-    </div>
-
-    <div
-        style="margin: 0 0 10px 0; float:right;"
+    <b-button
+        v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+        style="float: right"
+        variant="outline-primary"
+        @click="searchInspecionList"
     >
-      <b-col>
-        <b-form-group
-        >
-          <flat-pickr
-              v-model="rangeDate"
-              placeholder="시작일 & 종료일"
-              class="form-control"
-              :config="{ mode: 'range'}"
-          />
-        </b-form-group>
-      </b-col>
-    </div>
+      외주 자재 실적 조회
+    </b-button>
     <div>
       <b-table
           ref="selectableTable"
-          :items="outsourceGrid"
+          :items="inspectionInfo"
           class="editable-tabdle"
           hover
           selectable
@@ -75,7 +40,7 @@ import {
 } from 'bootstrap-vue'
 import flatPickr from 'vue-flatpickr-component'
 import Ripple from 'vue-ripple-directive'
-import { orderList } from '@/components/logistic/outsourc/fields'
+import {outsourceList} from '@/components/logistic/outsourc/fields'
 import { mapActions, mapState } from 'vuex'
 import OrderRegister from "@/components/logistic/outsourc/order/OrderRegister";
 import OrderInfo from "@/components/logistic/outsourc/order/OrderInfo";
@@ -104,17 +69,18 @@ export default {
       rangeDate: null,
       startDate: null,
       endDate: null,
-      fields: orderList,
+      fields: outsourceList,
       selected: '',
+      rowData:'',
     }
   },
   computed: {
     //...mapState('logi/order', ['orderList']),
-    ...mapState('logi/outsource', ['outsourceGrid']),
+    ...mapState('logi/outsource', ['inspectionInfo']),
   },
   methods: {
     //...mapActions('logi/order', ['SEARCH_ORDER_LIST']),
-    ...mapActions('logi/outsource', ['searchOutsourcInfoList']),
+    ...mapActions('logi/outsource', ['searchOutsourcInfoList', 'searchInspecion', 'completeInspection']),
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()
     },
@@ -126,25 +92,19 @@ export default {
       this.endDate = this.rangeDate.split('to')[1].trim()
     },
     handleInput(payload) {
-      this.contractDetail = payload
+      this.rowData=payload
     },
-    searchOrderList() {
-      console.log('재고처리/발주필요 목록조회')
-      if (this.rangeDate === null) {
-        throw new Error('날짜입력')
-      }
-          // else if (this.startDate === null || this.endDate === null) {
-          //   throw new Error('날짜 범위 선택')
-      // }
-      else {
-        this.extractDate()
-        const date = { startDate: this.startDate, endDate: this.endDate, searchDateCondition:this.selected }
-        console.log(date)
-        this.searchOutsourcInfoList(date)
-      }
+    searchInspecionList() {
+      console.log('외주 자재 실적 조회')
+      this.searchInspecion()
     },
-    OrderOpen() {
-      console.log('모의재고처리 및 취합발주')
+    inpectionComplete() {
+      console.log('외주 자재 검사 완료')
+      delete this.rowData.__ob__;
+      console.log(this.rowData[0])
+      const rowData = this.rowData[0]
+      console.log(rowData)
+      this.completeInspection(rowData)
     },
     OptionOrderOpen() {
       console.log('임의발주')

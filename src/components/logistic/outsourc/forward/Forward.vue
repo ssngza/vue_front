@@ -4,7 +4,7 @@
         v-ripple.400="'rgba(113, 102, 240, 0.15)'"
         style="float: right"
         variant="outline-primary"
-        @click="searchOrderList"
+        @click="searchFowardList"
     >
       외주 자재 출고 필요목록 조회
     </b-button>
@@ -14,10 +14,11 @@
         style="float: right"
         v-ripple.400="'rgba(113, 102, 240, 0.15)'"
         variant="outline-primary"
-        @click="OrderOpen"
+        @click="ForwardStatusChange"
     >
       외주 자재 출고 모의전개
     </b-button>
+
     <div>
       <b-form-radio-group
           v-model="selected"
@@ -56,7 +57,7 @@
     <div>
       <b-table
           ref="selectableTable"
-          :items="outsourceGrid"
+          :items="outFowardInfoGrid"
           class="editable-tabdle"
           hover
           selectable
@@ -75,7 +76,7 @@ import {
 } from 'bootstrap-vue'
 import flatPickr from 'vue-flatpickr-component'
 import Ripple from 'vue-ripple-directive'
-import { orderList } from '@/components/logistic/outsourc/fields'
+import {outsourceList} from '@/components/logistic/outsourc/fields'
 import { mapActions, mapState } from 'vuex'
 import OrderRegister from "@/components/logistic/outsourc/order/OrderRegister";
 import OrderInfo from "@/components/logistic/outsourc/order/OrderInfo";
@@ -104,17 +105,18 @@ export default {
       rangeDate: null,
       startDate: null,
       endDate: null,
-      fields: orderList,
+      fields: outsourceList,
       selected: '',
+      rowData:'',
     }
   },
   computed: {
     //...mapState('logi/order', ['orderList']),
-    ...mapState('logi/outsource', ['outsourceGrid']),
+    ...mapState('logi/outsource', ['outFowardInfoGrid']),
   },
   methods: {
     //...mapActions('logi/order', ['SEARCH_ORDER_LIST']),
-    ...mapActions('logi/outsource', ['searchOutsourcInfoList']),
+    ...mapActions('logi/outsource', ['searchFowardInfoList', 'updateFowardStatus']),
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()
     },
@@ -126,10 +128,10 @@ export default {
       this.endDate = this.rangeDate.split('to')[1].trim()
     },
     handleInput(payload) {
-      this.contractDetail = payload
+      this.rowData = payload
     },
-    searchOrderList() {
-      console.log('재고처리/발주필요 목록조회')
+    searchFowardList() {
+      console.log('외주 자재 출고 필요목록조회')
       if (this.rangeDate === null) {
         throw new Error('날짜입력')
       }
@@ -140,11 +142,14 @@ export default {
         this.extractDate()
         const date = { startDate: this.startDate, endDate: this.endDate, searchDateCondition:this.selected }
         console.log(date)
-        this.searchOutsourcInfoList(date)
+        this.searchFowardInfoList(date)
       }
     },
-    OrderOpen() {
-      console.log('모의재고처리 및 취합발주')
+    ForwardStatusChange() {
+      console.log('외주 자재 출고 모의전개')
+      console.log(this.rowData[0].outsourcNo)
+      this.updateFowardStatus(this.rowData[0].outsourcNo)
+
     },
     OptionOrderOpen() {
       console.log('임의발주')
