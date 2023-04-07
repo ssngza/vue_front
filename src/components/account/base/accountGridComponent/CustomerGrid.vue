@@ -82,7 +82,7 @@ import {
 } from 'bootstrap-vue'
 import vSelect from 'vue-select'
 import SearchCustomerCode from '@/components/logistic/sales/SearchCustomerComponent.vue'
-import { mapState } from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 
 export default {
   components: {
@@ -177,12 +177,14 @@ export default {
     } */
   },
   methods: {
+    ...mapMutations('account/base', ['ADD_CUSTOMER_CODE']),
     addButton() {
       console.log('추가버튼')
       this.tableEditModal = true
     },
     saveButton() {
       console.log('저장버튼')
+      this.$emit('regist-data')
     },
     searchButton() {
       console.log('조회버튼')
@@ -212,15 +214,19 @@ export default {
       console.log("모달 rowData:::",row.rowData)
       row.gridType = this.gridType
       console.log("모달 gridType:::",row.gridType)
+/*
       if (this.onlyOne === 'true') {
         this.$store.commit('ADD_ROW_ONLY_ONE', row)
       } else {
         this.$store.commit('ADD_ROW', row)
       }
+*/
 
       this.$emit('input-modal', rowData)
       console.log('마지막emit::',rowData)
+      console.log('거래처리스트',this.customerList)
       this.tableEditModal = false
+      this.ADD_CUSTOMER_CODE(rowData)
     },
     inputDataModal(){
 
