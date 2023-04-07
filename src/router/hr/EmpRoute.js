@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
 // 인 사 관 리 =========================================================================================================================
 import { default as EmpDetailedContainer } from '../page/EmpDetailed/SimpleEmpSearch/EmpDetailedContainer'; // 사원상세조회          //유주
@@ -9,17 +9,17 @@ import { default as EmploymentAssign } from '../page/EmpAssign/EmpAssignContaine
 const EmpRoute = () => {
     return (
         <>
-            {/*** 사원상세조회 */}
+            {/!*** 사원상세조회 *!/}
             <Route exact path="/app/hr/affair/empDetailedView" component={EmpDetailedContainer} />{' '}
-            {/***   사원등록*/}
+            {/!***   사원등록*!/}
             <Route exact path="/app/hr/affair/empRegist" component={EmpRegist} />
-            {/*** 재직증명관리 */}
+            {/!*** 재직증명관리 *!/}
             <Route exact path="/app/hr/affair/EmploymentManage" component={EmploymentManage} />
-            {/*------------- 사원메뉴--------------- */}
-            {/*** 인사발령 */}
+            {/!*------------- 사원메뉴--------------- *!/}
+            {/!*** 인사발령 *!/}
             <Route exact path="/app/hr/affair/employmentAssign" component={EmploymentAssign} />
         </>
     );
-};
+};*/
 
 export default withRouter(EmpRoute);
