@@ -1,97 +1,144 @@
-/*import React from 'react';
-import { Route, withRouter } from 'react-router-dom';
-import Auth from '../../../../util/auth';
+const ERP = '/hr'
+const SalaryRoute = [
 
-// 급 여 조 회 =========================================================================================================================
-import { default as MonthSalaryContainer } from '../page/MonthSalary/MonthSalaryContainer'; //2020-08-20 63기 손유찬 -- 월별 급여조회
+    {
+        path: `${ERP}/monthSalary`,
+        name: 'monthSalary',
+        component: () => import('@/views/hr/salary/monthSalary'),
+        meta: {
+            pageTitle: '급여조회',
+            breadcrumb: [
+                {
+                    text: '급여관리',
+                },
+                {
+                    text: '급여조회',
+                    active: true,
+                },
+            ],
+        },
+    },
+    {
+        path: `${ERP}/salaryAwards`,
+        name: 'salaryAwards',
+        component: () => import('@/views/hr/salary/salaryAwards'),
+        meta: {
+            pageTitle: '상여 및 성과급 조회',
+            breadcrumb: [
+                {
+                    text: '급여관리',
+                },
+                {
+                    text: '상여 및 성과급 조회',
+                    active: true,
+                },
+            ],
+        },
+    },
+    {
+        path: `${ERP}/salaryAwardManage`,
+        name: 'salaryAwardManage',
+        component: () => import('@/views/hr/salary/salaryAwardManage'),
+        meta: {
+            pageTitle: '성과급등록',
+            breadcrumb: [
+                {
+                    text: '급여관리',
+                },
+                {
+                    text: '성과급등록',
+                    active: true,
+                },
+            ],
+        },
+    },
+    {
+        path: `${ERP}/severancePay`,
+        name: 'severancePay',
+        component: () => import('@/views/hr/salary/severancePay'),
+        meta: {
+            pageTitle: '퇴직금 조회',
+            breadcrumb: [
+                {
+                    text: '급여관리',
+                },
+                {
+                    text: '퇴직금 조회',
+                    active: true,
+                },
+            ],
+        },
+    },
+    {
+        path: `${ERP}/baseSalaryManage`,
+        name: 'baseSalaryManage',
+        component: () => import('@/views/hr/salary/baseSalaryManage'),
+        meta: {
+            pageTitle: '급여기준관리',
+            breadcrumb: [
+                {
+                    text: '급여관리',
+                },
+                {
+                    text: '급여기준관리',
+                    active: true,
+                },
+            ],
+        },
+    },
+    {
+        path: `${ERP}/baseExtSalManage`,
+        name: 'baseExtSalManage',
+        component: () => import('@/views/hr/salary/baseExtSalManage'),
+        meta: {
+            pageTitle: '초과수당관리',
+            breadcrumb: [
+                {
+                    text: '급여관리',
+                },
+                {
+                    text: '초과수당관리',
+                    active: true,
+                },
+            ],
+        },
+    },
+    {
+        path: `${ERP}/socialInsure`,
+        name: 'socialInsure',
+        component: () => import('@/views/hr/salary/socialInsure'),
+        meta: {
+            pageTitle: '사회보험관리',
+            breadcrumb: [
+                {
+                    text: '급여관리',
+                },
+                {
+                    text: '사회보험관리',
+                    active: true,
+                },
+            ],
+        },
+    },
+    {
+        path: `${ERP}/settlementManage`,
+        name: 'settlementManage',
+        component: () => import('@/views/hr/salary/settlementManage'),
+        meta: {
+            pageTitle: '연말정산관리',
+            breadcrumb: [
+                {
+                    text: '급여관리',
+                },
+                {
+                    text: '연말정산관리',
+                    active: true,
+                },
+            ],
+        },
+    },
 
-// 급 여 관 리 =========================================================================================================================
-import { default as BaseExtSalContainer } from '../page/BaseExtSalManage/BaseExtSalContainer'; //2020-08-22 63기 손유찬 -- 초과수당관리
-import { default as BaseDeductionContainer } from '../page/BaseDeductionManage/BaseDeductionContainer'; //2020-08-26 63기 손유찬 -- 공제기준관리
-import { default as BaseSalaryContainer } from '../page/BaseSalaryManage/BaseSalaryContainer'; //2020-11-20 64기 정준혁 -- 급여기준관리
-import { default as CloseSalaryContainer } from '../page/SalaryManage/CloseSalaryContainer'; //2020-08-20 63기 손유찬수정 --월급여 조회마감
 
-import { default as SocialInsureContainer } from '../page/SocialInsure/SocialInsureContainer'; // 2021-09-02 67기 react팀 --사회보험정보관리
-
-import { default as SeverancePayContainer } from '../page/SeverancePay/SeverancePayContainer'; // 2021-09-09 67기 고범석 -- 퇴직금 관리 
-
-
-
-const SalaryRoute = () => {
-    return (
-        <>
-            {/!*---------------- 급여조회 ----------------*!/}
-            {/!**  월급여 조회 *!/}
-            {/!*******************2020-08-20 손유찬 시작*************************!/}
-            <Route exact path="/app/hr/Salary/monthSalary" component={MonthSalaryContainer} />{' '}
-            {/!*******************2020-08-20 손유찬 종료*************************!/}
-
-
-            {/!*----------------- 급여관리---------------- *!/}
-            {/!* 급여기준관리  *!/}
-            {/!*******************2020-11-20 정준혁 시작************************!/}
-            <Route
-                exact
-                path="/app/hr/salary/baseSalaryManage"
-                component={BaseSalaryContainer}
-            />{' '}
-            {/!*******************2020-11-20 정준혁 종료*************************!/}
-
-
-            {/!* 공제기준관리 *!/}
-            {/!*******************2020-08-26 정준혁 시작*************************!/}
-            <Route
-                exact
-                path="/app/hr/salary/baseDeductionManage"
-                component={BaseDeductionContainer}
-            />{' '}
-            {/!*******************2020-08-26 정준혁 종료*************************!/}
-
-
-            {/!* 초과수당관리 *!/}
-            {/!*******************2020-08-26 정준혁 시작*************************!/}
-            <Route
-                exact
-                path="/app/hr/salary/baseExtSalManage"
-                component={BaseExtSalContainer}
-            />{' '}
-            {/!*******************2020-08-26 정준혁 종료*************************!/}
-
-
-            {/!** 월급여마감 *!/}
-            {/!*******************2020-08-22 손유찬 시작*************************!/}
-            <Route
-                exact
-                path="/app/hr/salary/closeSalary"
-                component={Auth(CloseSalaryContainer, '/app/hr/salary/closeSalary')}
-            />{' '}
-            {/!*******************2020-08-22 손유찬 종료*************************!/}
-            {/!*----------------- 급여관리---------------- *!/}
-            {/!*******************2020-11-18 손유찬 시작*************************!/}
-
-
-            {/!** 사회보장 *!/}
-            <Route
-                exact
-                path="/app/hr/salary/socialInsure"
-                component={SocialInsureContainer}
-            //component={Auth(SocialInsureContainer, '/app/hr/salary/socialInsure')}
-            />{' '}
-            {/!*----------------- 사회보장---------------- *!/}
-
-
-
-            {/!*---------  2021/09/02   67기 고범석 ----------*!/}
-            {/!*---------  퇴직금 관리 ----------*!/}
-            {/!*---------  2021/09/02   67기 고범석 ----------*!/}
-            <Route
-                exact
-                path="/app/hr/salary/severancePay"
-                component={SeverancePayContainer}
-            />{' '}
-        </>
-
-    );
-};*/
+]
 
 export default SalaryRoute;

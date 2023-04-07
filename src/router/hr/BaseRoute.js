@@ -1,19 +1,13 @@
-/*const ERP = '/hr'
+import AttdRoute from "@/router/hr/AttdRoute";
+import EmpRoute from "@/router/hr/EmpRoute";
+import EducateRoute from "@/router/hr/EducateRoute";
+import resumeMgmtRoute from "@/router/hr/resumeMgmtRoute";
+import DayWorkerRoute from "@/router/hr/DayWorkerRoute";
+import SalaryRoute from "@/router/hr/SalaryRoute";
+
+const ERP = '/hr'
 const insaRouter = [
-  {
-    path: `${ERP}/home`,
-    name: 'hrHome',
-    component: () => import('@/views/hr/Home.vue'),
-    meta: {
-      pageTitle: 'HR',
-      breadcrumb: [
-        {
-          text: 'HR Home',
-          active: true,
-        },
-      ],
-    },
-  },
+
   {
     path: `${ERP}/emp-page`,
     name: 'emp-page',
@@ -77,5 +71,32 @@ const insaRouter = [
       ],
     },
   },
-]*/
+  {
+    path: `${ERP}/hr-register`,
+    name: 'emp-register',
+    component: () => import('@/views/hr/affair/page/EmpDetailed/EmpRegister'),
+    meta: {
+      pageTitle: '직원등록',
+      breadcrumb: [
+        {
+          text: '직원정보 관리',
+        },
+        {
+          text: '직원등록',
+          active: true,
+        }
+      ],
+    },
+  },
+    ...AttdRoute,
+    ...EmpRoute,
+    ...EducateRoute,
+    ...resumeMgmtRoute,
+    ...DayWorkerRoute,
+    ...SalaryRoute,
+
+
+
+
+]
 export default insaRouter

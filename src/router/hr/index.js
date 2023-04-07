@@ -7,24 +7,21 @@ import SalaryRoute from "@/router/hr/SalaryRoute";
 
 const ERP = '/hr'
 const insaRouter = [
-  {
-    path: `${ERP}/home`,
-    name: 'hrHome',
-    component: () => import('@/views/hr/Home.vue'),
-    meta: {
-      pageTitle: 'HR',
-      breadcrumb: [
-        {
-          text: 'HR Home',
-          active: true,
-        },
-      ],
-    },
-  },
-  ...BaseRoute,
-  ...AttdRoute,
-  ...DayWorkerRoute,
-  ...EmpRoute,
-  ...SalaryRoute
+   {
+      path: `${ERP}/home`,
+      name: 'home',
+      component: () => import('@/views/hr/Home.vue'),
+      meta: {
+         pageTitle: 'Home',
+         breadcrumb: [
+            {
+               text: 'Home',
+               active: true,
+            },
+         ],
+      },
+   },
+   ...BaseRoute,
+
 ]
 export default insaRouter
