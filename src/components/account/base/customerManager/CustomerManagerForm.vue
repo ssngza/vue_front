@@ -66,6 +66,7 @@ export default {
     customerBusinessItems:'',
     customerBasicAddress:'',
     selected: '',
+    selectData:[],
     buttonList:[
       {
         value: '조회',
@@ -93,30 +94,14 @@ export default {
     })
     const tableColumns=[{
       tableColumns:[
-        {
-          key: 'customerCode', label: '거래처코드', sortable: true,
-        },
-        {
-          key: 'workplaceCode', label: '사업장코드', sortable: true,
-        } ,
-        {
-          key: 'customerName', label: '거래처명', sortable: true,
-        },
-        {
-          key: 'customerCeo', label: '대표자', sortable: true,
-        },
-        {
-          key: 'businessLicenseNumber', label: '사업자등록번호', sortable: true,
-        },
-        {
-          key: 'customerBusinessConditions', label: '업태', sortable: true
-        },
-        {
-          key: 'customerBusinessItems', label: '종목', sortable: true
-        },
-        {
-          key: 'customerBasicAddress', label: '거래처기본주소', sortable: true
-        }
+        {key: 'customerCode', label: '거래처코드', sortable: true,},
+        {key: 'workplaceCode', label: '사업장코드', sortable: true,} ,
+        {key: 'customerName', label: '거래처명', sortable: true,},
+        {key: 'customerCeo', label: '대표자', sortable: true,},
+        {key: 'businessLicenseNumber', label: '사업자등록번호', sortable: true,},
+        {key: 'customerBusinessConditions', label: '업태', sortable: true},
+        {key: 'customerBusinessItems', label: '종목', sortable: true},
+        {key: 'customerBasicAddress', label: '거래처기본주소', sortable: true}
       ]
     }]
 
@@ -124,8 +109,10 @@ export default {
 
   },
   methods: {
-    showGridData(val){
-      console.log(val)
+    showGridData(selectData){
+      console.log(selectData)
+      this.selectData=selectData[0]
+      console.log('클릭하고',selectData)
     },
     getGridData(){
       console.log("getGridData")
@@ -140,7 +127,9 @@ export default {
       // await this.$store.dispatch('account/base/GET_CUSTOMER_LIST',rowData[0].item)
     },
     async registData(){
-
+      console.log("폼에서 저장버튼")
+      console.log(this.selectData)
+      this.$store.dispatch('account/base/SAVE_CUSTOMER_CODE', this.selectData)
     }
   },
 }

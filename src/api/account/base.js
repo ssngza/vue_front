@@ -90,7 +90,7 @@ function fetchAccountControllCode() {
 }
 
 /**
- * 거래처조회
+ * 거래처조회 임시
  */
 function searchCustomerInfoList() {
     return accountApi.get('/base/customers')
@@ -102,6 +102,13 @@ function deleteCustomerCode(customerCode){
             params:{customerCode}
         })
 }
+
+function saveCustomer(newCustomer){
+    console.log("api  : ")
+    console.log(newCustomer)
+    return accountApi.post('/base/saveNewCustomer',newCustomer)
+}
+
 export {
-    fetchAccountCode, fetchAccountCustomerCode, fetchAccountControllCode, fetchAccountLedger, fetchGeneralAccountLedger, fetchAccountCodeList, deleteAccountCode, addAccountCode, searchCustomerInfoList, deleteCustomerCode,
+    fetchAccountCode, fetchAccountCustomerCode, fetchAccountControllCode, fetchAccountLedger, fetchGeneralAccountLedger, fetchAccountCodeList, deleteAccountCode, addAccountCode, searchCustomerInfoList, deleteCustomerCode,saveCustomer
 }
