@@ -117,6 +117,18 @@ const LogisticsInfoRoute = [
             ],
         },
     },
+    {
+        path: `${ERP}/codeSearch`,
+        name: 'CodeSearch', // 이건 navigation Route와 같음
+        component: () => import('@/views/logistic/base/baseInfo/CodeSearch.vue'),
+        meta: {
+            pageTitle: '코드 관리',
+            breadcrumb: [
+                {text: '물류 정보',},
+                {text: '코드 관리',},
+                {text: '코드 조회',active: true,},
+            ],
+        },
+    },
 ]
 export default LogisticsInfoRoute
-

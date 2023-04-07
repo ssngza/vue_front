@@ -62,6 +62,11 @@ function getWarehouseDetailList(payload) {
       {params:{warehouseCode: payload.warehouseCode}})
 }
 
+function getStockList() {
+  console.log("getStockList")
+  return logiApi.get('/purchase/searchStockList')
+}
+
 export {
   // eslint-disable-next-line import/prefer-default-export
   searchOrderList,
@@ -69,5 +74,6 @@ export {
   searchBomList,
   searchRegistBomList,
   getWarehouseDetailList,
+  getStockList,
 
 }

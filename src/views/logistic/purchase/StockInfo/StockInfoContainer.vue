@@ -1,39 +1,37 @@
 <template>
   <div>
     <div style="float: right; display: inline-flex">
-
-        <label for="example-input1">입고날짜</label>
-        <b-input-group
-            class="mb-1"
-            style="width: 200px"
-        >
-          <b-form-input
-              id="example-input1"
+      <label for="example-input1">입고날짜</label>
+      <b-input-group
+          class="mb-1"
+          style="width: 200px"
+      >
+        <b-form-input
+            id="example-input1"
+            v-model="startDate"
+            type="text"
+            placeholder="YYYY-MM-DD"
+            autocomplete="off"
+            show-decade-nav
+        />
+        <b-input-group-append>
+          <b-form-datepicker
               v-model="startDate"
-              type="text"
-              placeholder="YYYY-MM-DD"
-              autocomplete="off"
               show-decade-nav
+              button-only
+              right
+              locale="en-US"
+              aria-controls="example-input1"
+              @context="onContext"
           />
-          <b-input-group-append>
-            <b-form-datepicker
-                v-model="startDate"
-                show-decade-nav
-                button-only
-                right
-                locale="en-US"
-                aria-controls="example-input1"
-                @context="onContext"
-            />
-          </b-input-group-append>
-        </b-input-group>
+        </b-input-group-append>
+      </b-input-group>
 
       <b-button
           variant="primary"
       >
         입고
       </b-button>
-
     </div>
 
     <b-table
@@ -44,9 +42,7 @@
         empty-text="No matching records found"
         style="min-width: 100%; width: 1230px"
     />
-
   </div>
-
 </template>
 
 <script>
@@ -63,12 +59,11 @@ export default {
     BInputGroup,
     BInputGroupAppend,
   },
-  computed: {},
-  mounted() {
-    const date = new Date()
-    const year = date.getFullYear()
-    const month = date.getMonth() + 1
-    this.startDate = `${year}-${month}-01`
+  computed: {
+    ...mapState({
+      stockList: state => state.logi.stock.stockList,
+    }),
+    /*...mapState('logi/stock', ['stockList']),*/
   },
   data() {
     return {
@@ -93,6 +88,16 @@ export default {
       // The following will be an empty string until a valid date is entered
       this.selected = ctx.selectedYMD
     },
+  },
+  created() {
+  },
+  mounted() {
+    const date = new Date()
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    this.startDate = `${year}-${month}-01`
+    console.log("mounted 실행")
+    this.$store.dispatch('logi/stock/SEARCH_STOCK_LIST')
   },
 }
 </script>

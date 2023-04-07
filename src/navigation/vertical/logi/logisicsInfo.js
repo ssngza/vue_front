@@ -27,6 +27,10 @@ export default [
             {
                 title: '코드 관리',
                 route: 'codeInfo',
+                children: [{
+                    title: '코드관리',
+                    route: 'CodeSearch',
+                }],
             },
             {
                 title: '품목 관리',

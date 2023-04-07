@@ -4,4 +4,7 @@ export default {
         state.stockAmountDetailList = gridRow
     },
 
+    SEARCH_STOCK_LIST(state, gridRow) {
+        state.stockList = gridRow
+    },
 }
