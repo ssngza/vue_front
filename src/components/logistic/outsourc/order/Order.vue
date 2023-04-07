@@ -42,7 +42,7 @@ import {
 } from 'bootstrap-vue'
 import flatPickr from 'vue-flatpickr-component'
 import Ripple from 'vue-ripple-directive'
-import { orderList } from '@/components/logistic/outsourc/fields'
+import {outsourceList} from '@/components/logistic/outsourc/fields'
 import { mapActions, mapState } from 'vuex'
 import OrderRegister from "@/components/logistic/outsourc/order/OrderRegister";
 import OrderInfo from "@/components/logistic/outsourc/order/OrderInfo";
@@ -71,7 +71,7 @@ export default {
       rangeDate: null,
       startDate: null,
       endDate: null,
-      fields: orderList,
+      fields: outsourceList,
     }
   },
   computed: {
