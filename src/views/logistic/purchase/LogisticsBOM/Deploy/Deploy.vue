@@ -108,7 +108,7 @@ export default {
     itemCodeClick(item, index, e) {
       console.log("itemCodeClick 실행")
       const newObject = item.detailCode
-      this.itemCode = newObject
+      this.itemCode = newObject /*메서드 내에서 this 사용하여 컴포넌트 인스턴스에 접근 가능*/
     },
     /*BOM 조회 버튼 이벤트*/
     searchBomList(){
@@ -123,7 +123,7 @@ export default {
   },
   data() { /*(여긴 함수 형태) 객체 or 함수 형태로 vue 인스턴스가 사용할 정보 가진 속성*/
     return {
-      itemCode:'', /*초기값 정의*/
+      itemCode:'', /*초기값 선언*/
       /*필드 정의*/
       fields_bom: [
         {key: 'bomNo', label: 'BOM 번호', sortable: 'true',},

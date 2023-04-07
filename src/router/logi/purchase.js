@@ -19,7 +19,7 @@ const purchaseRoute = [
     {
         path: '/logi/purchase/orderRegister',
         name: 'orderRegister',
-        component: () => import('@/views/logistic/purchase/LogisticsBOM/LogisticsBOM'),
+        component: () => import('@/views/logistic/purchase/OrderRegist/OrderRegistContainer'),
         meta: {
             pageTitle: '발주 및 재고처리',
             breadcrumb: [
@@ -35,7 +35,7 @@ const purchaseRoute = [
     },    {
         path: '/logi/purchase/stockInfo',
         name: 'stockInfo',
-        component: () => import('@/views/logistic/purchase/LogisticsBOM/LogisticsBOM'),
+        component: () => import('@/views/logistic/purchase/StockInfo/StockInfoContainer'),
         meta: {
             pageTitle: '재고 관리',
             breadcrumb: [
