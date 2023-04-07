@@ -12,6 +12,9 @@ export default {
         detailTableColumns: [],
         editEstimateDetail: [],
         outsourceGrid:[],
+        outsourceInfoGrid:[],
+        outFowardInfoGrid:[],
+        inspectionInfo:[],
     },
     getters: {
     },

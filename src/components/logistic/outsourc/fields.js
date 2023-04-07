@@ -1,5 +1,5 @@
-export const orderList = [
-  { key: 'checkbox', label: 'checkbox',selected:false },
+export const outsourceList = [
+  { key: 'outsourcNo', label: '외주번호' },
   { key: 'mrpGatheringNo', label: 'MRP 취합 번호' },
   { key: 'orderOrProductionStatus', label: '구매 및 생산여부' },
   { key: 'itemCode', label: '품목코드' },
@@ -13,3 +13,5 @@ export const orderList = [
   { key: 'unitPriceOfOutsourc', label: '외주단가' },
   { key: 'sumPriceOfOutsourc', label: '합계액' },
 ]
+
+
