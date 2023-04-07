@@ -88,12 +88,12 @@ const insaRouter = [
       ],
     },
   },
-    ...AttdRoute,
-    ...EmpRoute,
-    ...EducateRoute,
-    ...resumeMgmtRoute,
-    ...DayWorkerRoute,
-    ...SalaryRoute,
+  ...AttdRoute,
+  ...EmpRoute,
+  ...EducateRoute,
+  ...resumeMgmtRoute,
+  ...DayWorkerRoute,
+  ...SalaryRoute,
 
 
 
