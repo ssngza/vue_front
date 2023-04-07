@@ -7,7 +7,7 @@ const SLIP_URL = '/account/slips'
 const JOURNAL_URL = '/account/journal'
 
 /**
- * 전표
+ * 전표 ㅇㅇㅇㅇㅇ
  */
 /**
  * 전체조회
