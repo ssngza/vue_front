@@ -91,6 +91,7 @@ function fetchAccountControllCode() {
 
 /**
  * 거래처조회
+ *
  */
 function searchCustomerInfoList() {
     return accountApi.get('/base/customers')
