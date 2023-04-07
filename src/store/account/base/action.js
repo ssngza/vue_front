@@ -6,7 +6,8 @@ import {
   fetchGeneralAccountLedger,
   fetchAccountCodeList,
   deleteAccountCode,
-  addAccountCode, searchCustomerInfoList,
+  addAccountCode, searchCustomerInfoList, deleteCustomerCode,
+  saveCustomer
 } from '@/api/account/base'
 
 export default {
@@ -116,7 +117,7 @@ export default {
     }
   },
   /**
-   * 거래처조회
+   * 거래처조회 조현준
    */
   async SEARCH_CUSTOMER_INFO_LIST({commit}){
     try {
@@ -131,11 +132,23 @@ export default {
     }
   },
 
-  async DELETE_CUSTOMER_CODE({commit}){
+  async DELETE_CUSTOMER_CODE({commit}, customerCode){
     try {
-      const {data} = await deleteCustomerCode()
-      commit('DELETE_CUSTOMER_CODE',data.customerCode)
+      console.log('커스터머코드',customerCode)
+       await deleteCustomerCode(customerCode)
+      commit('DELETE_CUSTOMER_CODE',customerCode)
       return data
+    } catch (err){
+      throw new Error(err)
+    }
+  },
+
+  async SAVE_CUSTOMER_CODE({commit}, newCustomer){
+    try {
+      console.log('커스터머',newCustomer)
+      await saveCustomer(newCustomer)
+     // commit('DELETE_CUSTOMER_CODE',customerCode)
+     // return data
     } catch (err){
       throw new Error(err)
     }

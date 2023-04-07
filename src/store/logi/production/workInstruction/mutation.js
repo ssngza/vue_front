@@ -8,6 +8,7 @@ export const mutations = {
         state.detailTableColumns = tableColumns[0].detailTableColumns;
     },
     SET_WORK_ORDER_LIST(state, workOrderListItem) {
+        console.log('워크오더리스트 뮤테이션',workOrderListItem)
         state.workOrderListItem=workOrderListItem;
     },
     SET_PRODUCTION_PERFORMANCE_INFO_LIST(state, productionPerformanceInfoListItem) {

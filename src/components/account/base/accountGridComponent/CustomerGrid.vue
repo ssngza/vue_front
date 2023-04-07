@@ -43,6 +43,7 @@
           :select-mode="selectMode"
           :sticky-header="true"
           @row-selected="onRowSelected"
+          @row-clicked="itemCodeClick"
       />
     </div>
     <div class="mx-2 mb-2">
@@ -57,6 +58,7 @@
           :table-row-data="tableColumnsData"
           @close="closeEditModal"
           @input-modal="inputModal"
+          @ok="inputDataModal"
       />
     </transition>
   </b-card>
@@ -80,7 +82,7 @@ import {
 } from 'bootstrap-vue'
 import vSelect from 'vue-select'
 import SearchCustomerCode from '@/components/logistic/sales/SearchCustomerComponent.vue'
-import { mapState } from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 
 export default {
   components: {
@@ -115,11 +117,18 @@ export default {
       grid: state => state.grid,
       tableColumns: state => state.tableColumns,
       customerList: state => state.account.base.customerList
-/*       customerList: state => state['account/base/customerList'] */
+      /*       customerList: state => state['account/base/customerList'] */
     }),
   },
   data() {
     return {
+      workplaceCode:'',
+      customerName:'',
+      customerCeo:'',
+      businessLicenseNumber:'',
+      customerBusinessConditions:'',
+      customerBusinessItems:'',
+      customerBasicAddress:'',
       gridData: [],
       tableColumnsData: [],
       startDate: '',
@@ -127,6 +136,7 @@ export default {
       searchMethod: '',
       registMethod: '',
       selectMode: 'single',
+      customerCode:'',
       selectOption: [
         'single', 'multiple',
       ],
@@ -167,21 +177,30 @@ export default {
     } */
   },
   methods: {
+    ...mapMutations('account/base', ['ADD_CUSTOMER_CODE']),
     addButton() {
       console.log('추가버튼')
       this.tableEditModal = true
     },
     saveButton() {
       console.log('저장버튼')
+      this.$emit('regist-data')
     },
     searchButton() {
       console.log('조회버튼')
       this.$emit('find-data')
       // this.$store.dispatch(this.method)
     },
-    deleteButton() {
+    deleteButton(item) {
       console.log('삭제버튼')
-      this.$emit('delete-data')
+      console.log('그리드에서item:',item)
+      console.log('넘길거: ', this.customerCode)
+      let customerCode=this.customerCode
+      if(!customerCode){
+        alert("행을 누르세용~~~")
+        return
+      }
+      this.$emit('delete-data',customerCode)
     },
     onRowSelected(val) {
       this.$emit('row-selected', val)
@@ -192,16 +211,35 @@ export default {
     inputModal(rowData) {
       const row = {}
       row.rowData = rowData
+      console.log("모달 rowData:::",row.rowData)
       row.gridType = this.gridType
+      console.log("모달 gridType:::",row.gridType)
+/*
       if (this.onlyOne === 'true') {
         this.$store.commit('ADD_ROW_ONLY_ONE', row)
       } else {
         this.$store.commit('ADD_ROW', row)
       }
+*/
 
       this.$emit('input-modal', rowData)
+      console.log('마지막emit::',rowData)
+      console.log('거래처리스트',this.customerList)
       this.tableEditModal = false
+      this.ADD_CUSTOMER_CODE(rowData)
     },
+    inputDataModal(){
+
+    },
+    itemCodeClick(item) {
+      console.log("itemCodeClick 실행")
+      console.log("itemList::::",item)
+      console.log("item",item.customerCode)
+      this.customerCode=item.customerCode
+      /*       const newObject = item.detailCode
+
+            this.itemCodeInput = newObject */
+    }
   },
 }
 </script>

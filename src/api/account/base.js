@@ -9,13 +9,13 @@ const ACCOUNT_CODE_URL = '/base/accountCodes'
  * @returns {*}
  */
 function fetchAccountCode(searchCode) {
-  const { accountCode, accountName } = searchCode
-  return accountApi.get(`${ACCOUNT_CODE_URL}/${accountCode}`,
-    {
-      params: {
-        accountName,
-      },
-    })
+    const { accountCode, accountName } = searchCode
+    return accountApi.get(`${ACCOUNT_CODE_URL}/${accountCode}`,
+        {
+            params: {
+                accountName,
+            },
+        })
 }
 
 /**
@@ -24,7 +24,7 @@ function fetchAccountCode(searchCode) {
  * @returns {*}
  */
 function fetchAccountCodeList() {
-  return accountApi.get(`${ACCOUNT_CODE_URL}`)
+    return accountApi.get(`${ACCOUNT_CODE_URL}`)
 }
 
 /**
@@ -33,7 +33,7 @@ function fetchAccountCodeList() {
  * @returns {*}
  */
 function deleteAccountCode(accountInnerCode) {
-  return accountApi.delete(`${ACCOUNT_CODE_URL}/${accountInnerCode}`)
+    return accountApi.delete(`${ACCOUNT_CODE_URL}/${accountInnerCode}`)
 }
 
 /**
@@ -42,36 +42,36 @@ function deleteAccountCode(accountInnerCode) {
  * @returns {*}
  */
 function addAccountCode(accountCode) {
-  return accountApi.post(`${ACCOUNT_CODE_URL}`, accountCode)
+    return accountApi.post(`${ACCOUNT_CODE_URL}`, accountCode)
 }
 
 /**
  * 계정별원장
  */
 function fetchAccountLedger(searchCode) {
-  console.log(searchCode)
-  const { accountCode, startDate, endDate } = searchCode
-  return accountApi.get(`${ACCOUNT_URL}/${accountCode}`,
-    {
-      params: {
-        startDate,
-        endDate,
-      },
-    })
+    console.log(searchCode)
+    const { accountCode, startDate, endDate } = searchCode
+    return accountApi.get(`${ACCOUNT_URL}/${accountCode}`,
+        {
+            params: {
+                startDate,
+                endDate,
+            },
+        })
 }
 
 /**
  * 총계정원장
  */
 function fetchGeneralAccountLedger(searchCode) {
-  const { startDate, endDate } = searchCode
-  return accountApi.get(`${ACCOUNT_URL}/`,
-    {
-      params: {
-        startDate,
-        endDate,
-      },
-    })
+    const { startDate, endDate } = searchCode
+    return accountApi.get(`${ACCOUNT_URL}/`,
+        {
+            params: {
+                startDate,
+                endDate,
+            },
+        })
 }
 
 /**
@@ -79,26 +79,36 @@ function fetchGeneralAccountLedger(searchCode) {
  * @returns {*}
  */
 function fetchAccountCustomerCode() {
-  return accountApi.get('/base/customers')
+    return accountApi.get('/base/customers')
 }
 /**
  * 컨트롤 코드조회
  * @returns {*}
  */
 function fetchAccountControllCode() {
-  return accountApi.get('/base/accountControllerCodes')
+    return accountApi.get('/base/accountControllerCodes')
 }
 
 /**
  * 거래처조회
  */
 function searchCustomerInfoList() {
-  return accountApi.get('/base/customers')
+    return accountApi.get('/base/customers')
 }
 
-// function deleteCustomerCode(){
-//   return accountApi.
-// }
+function deleteCustomerCode(customerCode){
+    return accountApi.delete('/base/deleteNormalCustormer',
+        {
+            params:{customerCode}
+        })
+}
+
+function saveCustomer(newCustomer){
+    console.log("api  : ")
+    console.log(newCustomer)
+    return accountApi.post('/base/saveNewCustomer',newCustomer)
+}
+
 export {
-  fetchAccountCode, fetchAccountCustomerCode, fetchAccountControllCode, fetchAccountLedger, fetchGeneralAccountLedger, fetchAccountCodeList, deleteAccountCode, addAccountCode, searchCustomerInfoList,
+    fetchAccountCode, fetchAccountCustomerCode, fetchAccountControllCode, fetchAccountLedger, fetchGeneralAccountLedger, fetchAccountCodeList, deleteAccountCode, addAccountCode, searchCustomerInfoList, deleteCustomerCode,saveCustomer
 }
