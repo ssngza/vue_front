@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import AccountRoute from './account/AccountRoute'
 
-import baseRoute from './hr/BaseRoute'
+import insaRouter from './hr'
 import logiRouter from './logi'
 import accountRouter from './account/BaseRoute'
 import commonRouter from './common'
@@ -23,7 +23,7 @@ const router = new VueRouter({
     return { x: 0, y: 0 }
   },
   routes: [
-    ...baseRoute,
+    ...insaRouter,
     ...accountRouter,
     ...logiRouter,
     ...commonRouter,

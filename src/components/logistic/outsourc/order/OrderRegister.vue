@@ -78,7 +78,7 @@ import {
 } from 'bootstrap-vue'
 import flatPickr from 'vue-flatpickr-component'
 import Ripple from 'vue-ripple-directive'
-import { orderList } from '@/components/logistic/outsourc/fields'
+import {orderList, outsourceList} from '@/components/logistic/outsourc/fields'
 import { mapActions, mapState } from 'vuex'
 import OrderRegister from "@/components/logistic/outsourc/order/OrderRegister";
 import OrderInfo from "@/components/logistic/outsourc/order/OrderInfo";
@@ -107,7 +107,7 @@ export default {
       rangeDate: null,
       startDate: null,
       endDate: null,
-      fields: orderList,
+      fields: outsourceList,
       selected: '',
       insertData:[],
     }
@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     //...mapActions('logi/order', ['SEARCH_ORDER_LIST']),
-    ...mapActions('logi/outsource', ['searchOutsourcInfoList', 'insertOutsourcList']),
+    ...mapActions('logi/outsource', ['searchOutsourcInfoList', 'insertOutsourcList', 'searchOutsourcList']),
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()
     },
@@ -145,7 +145,7 @@ export default {
         this.extractDate()
         const date = { startDate: this.startDate, endDate: this.endDate, searchDateCondition:this.selected }
         console.log(date)
-        this.searchOutsourcInfoList(date)
+        this.searchOutsourcList(date)
       }
     },
     OrderOpen() {

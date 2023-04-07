@@ -19,6 +19,15 @@ export default {
         // state.detailGrid = []
         // state.grid = gridRow
     },
+    setOutsourcInfo(state, gridRow){
+        state.outsourceInfoGrid=gridRow
+    },
+    setFowardInfo(state, gridRow){
+        state.outFowardInfoGrid=gridRow
+    },
+    setInspectionInfo(state, gridRow){
+      state.inspectionInfo=gridRow
+    },
     setDetailGrid(state, gridRow) {
         state.detailGrid = gridRow
     },
