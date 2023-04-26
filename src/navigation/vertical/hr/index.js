@@ -124,12 +124,12 @@ export default [
                 icon: 'EditIcon',
                 children: [
                     {
-                        title: '일근태등록',
-                        route: 'dailyAttnd',
+                        title: '일근태조회',
+                        route: 'dailyAttend',
                     },
                     {
                         title: '근태 외 신청',
-                        route: 'attndApproval'
+                        route: 'attendApproval'
                     },
                     {
                         title: '연차신청',
@@ -145,15 +145,15 @@ export default [
                     },
                     {
                         title: '일근태관리',
-                        route: 'dailyAttndMgmt'
+                        route: 'dailyAttendMgmt'
                     },
                     {
                         title: '월근태관리',
-                        route: 'monthAttndMgmt'
+                        route: 'monthAttendMgmt'
                     },
                     {
                         title: '근태 외 승인관리',
-                        route: 'attndApprovalMgmt'
+                        route: 'attendApprovalMgmt'
                     },
                     {
                         title: '연차관리',
