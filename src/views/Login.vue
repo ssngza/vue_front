@@ -8,7 +8,7 @@
       <b-link class="brand-logo">
         <vuexy-logo />
         <h2 class="brand-text text-primary ml-1">
-          69
+         75
         </h2>
       </b-link>
       <!-- /Brand logo-->
@@ -43,10 +43,10 @@
             title-tag="h2"
             class="font-weight-bold mb-1"
           >
-            웰컴
+            Welcome to the Home
           </b-card-title>
           <b-card-text class="mb-2">
-            잡소리
+            시스템
           </b-card-text>
 
           <!-- form -->

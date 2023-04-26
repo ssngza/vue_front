@@ -1,14 +1,14 @@
 <template>
   <div>
-    <Order />
+    <SalaryAwards />
   </div>
 </template>
 <script>
-import Order from '@/components/logistic/outsourc/order/Order.vue'
+import SalaryAwards from '@/components/hr/salary/salaryAwards.vue'
 
 export default {
   components: {
-    Order,
+    SalaryAwards,
   },
 }
 </script>
