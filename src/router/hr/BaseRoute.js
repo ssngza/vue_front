@@ -5,13 +5,15 @@ import resumeMgmtRoute from "@/router/hr/resumeMgmtRoute";
 import DayWorkerRoute from "@/router/hr/DayWorkerRoute";
 import SalaryRoute from "@/router/hr/SalaryRoute";
 
+
+
 const ERP = '/hr'
 const insaRouter = [
 
   {
     path: `${ERP}/emp-page`,
     name: 'emp-page',
-    component: () => import('@/views/hr/affair/page/EmpDetailed/EmpListGrid.vue'),
+    component: () => import('@/views/hr/affair/page/EmpDetailed/EmpFromPage.vue'),
     meta: {
       pageTitle: '직원정보 관리',
       breadcrumb: [
@@ -28,7 +30,7 @@ const insaRouter = [
   {
     path: `${ERP}/emp-detail`,
     name: 'emp-detail',
-    component: () => import('@/views/hr/affair/page/EmpDetailed/EmpDetail.vue'),
+    component: () => import('@/views/hr/affair/page/EmpDetailed/EmpDetailPage.vue'),
     meta: {
       pageTitle: '직원 상세정보',
       breadcrumb: [
@@ -88,6 +90,8 @@ const insaRouter = [
       ],
     },
   },
+
+
   ...AttdRoute,
   ...EmpRoute,
   ...EducateRoute,

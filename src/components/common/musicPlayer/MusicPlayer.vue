@@ -536,6 +536,17 @@ export default {
         this.isPlaying = true
       }
     },
+
+
+
+
+
+
+
+
+
+
+
     nextSong() {
       if (this.finish === false) {
         return
@@ -568,6 +579,15 @@ export default {
       this.isPlaying = false
       this.playPause()
     },
+
+
+
+
+
+
+
+
+
     previousSong() {
       if (this.finish === false) {
         return
