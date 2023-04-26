@@ -1,19 +1,24 @@
 <template>
   <div>
-    <SlipForm />
+    <EmpDetailFrom />
   </div>
 </template>
 <script>
-import SlipForm from '@/components/account/account/Slip/SlipForm.vue'
+import EmpDetailFrom from "@/components/hr/emp/EmpDetailFrom.vue";
+
 export default {
   components: {
-    SlipForm,
+    EmpDetailFrom,
+
 
   },
+
   methods: {
   },
+
 }
 </script>
 
 <style>
+
 </style>
