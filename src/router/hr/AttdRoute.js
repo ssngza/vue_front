@@ -2,9 +2,9 @@ const ERP = '/hr'
 const AttdRoute = [
 
     {
-        path: `${ERP}/dailyAttnd`,
-        name: 'dailyAttnd',
-        component: () => import('@/views/hr/attendance/dailyAttnd'),
+        path: `${ERP}/dailyAttend`,
+        name: 'dailyAttend',
+        component: () => import('@/views/hr/attendance/dailyAttnd.vue'),
         meta: {
             pageTitle: '일근태등록',
             breadcrumb: [
@@ -19,9 +19,9 @@ const AttdRoute = [
         },
     },
     {
-        path: `${ERP}/attndApproval`,
-        name: 'attndApproval',
-        component: () => import('@/views/hr/attendance/attndApproval'),
+        path: `${ERP}/attendApproval`,
+        name: 'attendApproval',
+        component: () => import('@/views/hr/attendance/attendApproval.vue'),
         meta: {
             pageTitle: '근태 외 신청',
             breadcrumb: [
@@ -123,7 +123,7 @@ const AttdRoute = [
     {
         path: `${ERP}/attndApprovalMgmt`,
         name: 'attndApprovalMgmt',
-        component: () => import('@/views/hr/attendance/attndApprovalMgmt'),
+        component: () => import('@/views/hr/attendance/attendApprovalMgmt.vue'),
         meta: {
             pageTitle: '근태 외 승인관리',
             breadcrumb: [
