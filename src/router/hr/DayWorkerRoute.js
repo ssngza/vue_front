@@ -23,7 +23,7 @@ const DayWorkerRoute = [
         name: 'deptManage',
         component: () => import('@/views/hr/dayworker/deptManage'),
         meta: {
-            pageTitle: '부서정보관리',
+            pageTitle: '인사정보관리',
             breadcrumb: [
                 {
                     text: '인사기초정보 관리',
@@ -40,13 +40,13 @@ const DayWorkerRoute = [
         name: 'positionManage',
         component: () => import('@/views/hr/dayworker/positionManage'),
         meta: {
-            pageTitle: '직급정보관리',
+            pageTitle: '연금정보관리',
             breadcrumb: [
                 {
                     text: '인사기초정보 관리',
                 },
                 {
-                    text: '직급정보관리',
+                    text: '연금정보관리',
                     active: true,
                 },
             ],
