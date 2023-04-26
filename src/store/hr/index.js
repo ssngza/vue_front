@@ -3,12 +3,14 @@ import router from '@/router/index'
 import mutations from '@/store/hr/affair/mutation'
 import company from './company/state'
 import emp from './affair/state'
+import salary from './salary/state'
 
 export default {
   namespaced: true,
   modules: {
     emp,
     company,
+    salary
   },
   state: {
     connect: false,
@@ -16,7 +18,7 @@ export default {
   getters: {
   },
 
-  mutations,
+  mutations:{},
 
 /*  mutations: {
     login(state) {
