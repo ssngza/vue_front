@@ -20,6 +20,7 @@
     <div class="bookmark-wrapper align-items-center flex-grow-1 d-none d-lg-flex">
       <dark-Toggler class="d-none d-lg-block" />
     </div>
+
     <HRNav />
     <AccNav />
     <LogiNav />
@@ -109,6 +110,7 @@ import LogiNav from '@core/layouts/components/app-navbar/LogiNav'
 
 export default {
   components: {
+
     BLink,
     BNavbarNav,
     BNavItemDropdown,
@@ -122,6 +124,7 @@ export default {
     HRNav,
     AccNav,
     LogiNav,
+
   },
   props: {
     toggleVerticalMenuActive: {
