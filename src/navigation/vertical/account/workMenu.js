@@ -29,6 +29,8 @@ export default [
         icon: 'FileIcon',
       },
 
+
+
     ],
 
   },
@@ -92,6 +94,7 @@ export default [
         route: { name: 'costStatement' },
         icon: 'FileIcon',
       },
+
     ],
   },
 

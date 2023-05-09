@@ -62,7 +62,7 @@
         enabled: true,
         perPage:pageLength
       }"
-      theme="black-rhino"
+      theme="polar-bear"
       @on-selected-rows-change="selectionChanged"
     >
       <!--선택시 나오게-->
@@ -203,6 +203,14 @@ export default {
         {
           label: '승인상태',
           field: 'slipStatus',
+        },
+        {
+          label: '전표종류',
+          field: 'slipType',
+        },
+        {
+          label: '김하은',
+          field: 'slipType',
         },
       ],
       rows: [],
