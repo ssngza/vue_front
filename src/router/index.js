@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import AccountRoute from './account/AccountRoute'
 
-import insaRouter from './hr/BaseRoute'
+import insaRouter from './hr'
 import logiRouter from './logi'
 import accountRouter from './account/BaseRoute'
 import commonRouter from './common'

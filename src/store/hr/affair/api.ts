@@ -1,4 +1,4 @@
-import {EmpList} from './state'
+import {EmpList} from './state.js'
 import {GetterTree} from "vuex";
 
 const getters: GetterTree<EmpList, Object> = {

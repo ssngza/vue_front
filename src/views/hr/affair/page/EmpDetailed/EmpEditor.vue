@@ -1,199 +1,286 @@
 <template>
-  <component :is="userData === undefined ? 'div' : 'b-card'">
-    <!-- Alert: No item found -->
 
+  <div>
     <div>
+      <b-card title="HOW 직원정보 관리 ❓" v-if="hideHow!==false">
+        <b-card-text>직원목록에서 직원을 클릭하면 상세정보조회가 불가능합니다.</b-card-text>
+        <div>
 
-      <b-alert
-        v-if="isOkay"
-        variant="danger"
-        :show="userData === undefined"
-      >
-        <h4 class="alert-heading">
-          직원관리 페이지를 불러오는데 실패했습니다.
-        </h4>
-        <div class="alert-body">
-          직원등록을 하시거나,
-          <b-link
-            class="alert-link"
-            :to="{ name: 'emp-page'}"
-          >
-            직원목록조회
-          </b-link>
-          에서 직원을 선택후 수정해주세요
-          <button
-            class="w-btn w-btn-gra1 w-btn-gra-anim"
-            type="button"
-            @click="ok"
+          <b-card-text>자세한건
+            <b-link href="https://www.google.com/" target="_blank">원장님</b-link>
+            에게 문의하세요.
+          </b-card-text>
+          <b-button
+              size="sm"
+              variant="outline-danger"
+              @click="hideHow=false"
           >
             닫기
-          </button>
+          </b-button>
         </div>
-      </b-alert>
+      </b-card>
     </div>
+    <!--    B-card 적용-->
 
-    <b-tabs
-      v-if="true"
-      pills
-    >
+    <b-container>
+      <b-row>
+        <b-col md="4">
+          <!-- 직원 전체 조회 table -->
+          <vue-good-table
+              ref="myTable"
+              :columns="columns"
+              :rows="all_emp_list"
+              max-height="730px"
+              :fixed-header="true"
+              @on-row-click="onRowClick"
+              theme="Polar-bear"
+              :pagination-options="{perPage:pageLength}"
+          >
+          </vue-good-table>
+        </b-col>
 
-      <!-- Tab: Account -->
-<!--      <b-tab
-        v-if="userData!==undefined"
-        active
-      >
-        <button @click="abc">
-          abc
-        </button>-->
-      <b-tab active v-if="userData!==undefined">
-        <template #title>
-          <feather-icon
-            icon="UserCheckIcon"
-            size="16"
-            class="mr-0 mr-sm-50"
-          />
-          <span class="d-none d-sm-inline">직원수정</span>
-        </template>
-        <user-edit-tab-account
-          :user-data="userData"
-          class="mt-2 pt-75"
-        />
-      </b-tab>
 
-      <!-- Tab: Information -->
-      <b-tab>
-        <h1>직원등록 메뉴입니다.</h1>
-        <template #title>
-          <feather-icon
-            icon="UserPlusIcon"
-            size="16"
-            class="mr-0 mr-sm-50"
-          />
-          <span class="d-none d-sm-inline">직원등록</span>
-        </template>
-        <!--        <user-edit-tab-information class="mt-2 pt-75" />-->
-      </b-tab>
+        <b-col>
+          <div><h2>직원 기초 정보 </h2></div>
 
-      <!-- Tab: Social -->
-      <!--      <b-tab>
-        <template #title>
-          <feather-icon
-              icon="Share2Icon"
-              size="16"
-              class="mr-0 mr-sm-50"
-          />
-          <span class="d-none d-sm-inline">Social</span>
-        </template>
-        <user-edit-tab-social class="mt-2 pt-75" />
-      </b-tab>-->
-    </b-tabs>
-  </component>
+          <b-row>
+
+            <b-col md="4">
+              <!-- table -->
+              <div class="background">
+                <div class="post" >
+                  <img class="post-body" :src="this.emp_image2"  />
+                </div>
+              </div>
+              <!-- 로딩중-->
+            </b-col>
+            <b-col>
+              <!--직원 기본정보 table -->
+              <div class="r1 row g-3">
+                <div class="c1 col-md-6 pb-1">
+                  <label for="inputEmail4" class="form-label1"><h4>사원명</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.empName}}
+                  </b-form-text>
+                </div>
+                <div class="c2 col-md-6 pb-1">
+                  <label for="inputPassword4" class="form-label2"><h4>사번</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.empCode}}
+                  </b-form-text>
+                </div>
+                <div class="c3 col-md-6 pb-1">
+                  <label for="inputEmail4" class="form-label3"><h4>생년월일</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.birthDate}}
+                  </b-form-text>
+                </div>
+                <div class="c4 col-md-6 pb-1">
+                  <<label for="inputPassword4" class="form-label4"><h4>성별</h4></label>>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.gender}}
+                  </b-form-text>
+                </div>
+                <div class="c5 col-md-6 pb-1">
+                  <label for="inputAddress" class="form-label5"><h4>부서</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.deptName}}
+                  </b-form-text>
+                </div>
+                <div class="c6 col-md-6 pb-1">
+                  <label for="inputAddress2" class="form-label6"><h4>부서번호</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.deptCode}}
+                  </b-form-text>
+                </div>
+                <div class="c7 col-md-6 pb-1">
+                  <label for="inputAddress2" class="form-label7"><h4>입사일</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.hireDate}}
+                  </b-form-text>
+                </div>
+              </div>
+              <!-- 로딩중-->
+            </b-col>
+          </b-row>
+          <div> &nbsp </div>
+
+          <b-row pt="5">
+            <b-col>
+              <!-- table -->
+              <!--직원 상세 정보 table -->
+              <div class="r2 row g-3">
+                <div class="col-md-12 pt-2 pb-1"><h2>직원 세부 정보</h2></div>
+                <div class="col-md-4 pb-1">
+                  <label for="inputEmail4" class="form-label"><h4>직급</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.positionName}}
+                  </b-form-text>
+                </div>
+                <div class="col-md-4 pb-1">
+                  <label for="inputPassword4" class="form-label"><h4>전화번호</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.phoneNumber}}
+                  </b-form-text>
+                </div>
+                <div class="col-md-4 pb-1">
+                  <label for="inputEmail4" class="form-label"><h4>E-Mail</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.email}}
+                  </b-form-text>
+                </div>
+                <div class="col-md-4 pb-1">
+                  <label for="inputAddress2" class="form-label"><h4>근무지</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.workplaceName}}
+                  </b-form-text>
+                </div>
+                <div class="col-md-4 pb-1">
+                  <label for="inputAddress2" class="form-label"><h4>최종학력</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.levelOfEducation}}
+                  </b-form-text>
+                </div>
+                <div class="col-md-4 pb-1">
+                  <label for="inputAddress2" class="form-label"><h4>우편번호</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpZipCode" >
+                    {{emp_detail.zipCode }}
+                  </b-form-text>
+                </div>
+                <div class="col-md-8 pb-1">
+                  <label for="inputPassword4" class="form-label"><h4>주소</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpAddress" >
+                    {{emp_detail.basicAddress}}
+                  </b-form-text>
+                </div>
+                <div class="col-md-4 pb-1">
+                  <label for="inputAddress" class="form-label"><h4>상세주소</h4></label>
+                  <b-form-text type="text" class="form-control" id="selectEmpDetailAddress" >
+                    {{emp_detail.detailAddress}}
+                  </b-form-text>
+                </div>
+
+              </div>
+              <!-- 로딩중-->
+            </b-col>
+          </b-row>
+        </b-col>
+      </b-row>
+    </b-container>
+
+
+  </div>
+
+
 </template>
 
 <script>
-import {
-  BAlert, BCard, BLink, BTab, BTabs,
-} from 'bootstrap-vue'
-/* import { ref, onUnmounted } from '@vue/composition-api'
-import router from '@/router' */
-/* import userStoreModule from '../userStoreModule' */
-import { mapState } from 'vuex'
-import UserEditTabAccount from './sideComponents/EmpModify'
-/* import UserEditTabInformation from './UserEditTabInformation.vue'
-import UserEditTabSocial from './UserEditTabSocial.vue' */
 
+import {
+  BAvatar, BPagination, BFormGroup, BFormInput, BFormSelect, BRow, BCol,
+} from 'bootstrap-vue'
+import {VueGoodTable} from 'vue-good-table'
+import {mapActions, mapState} from 'vuex'
+import Vue from 'vue'
+import ToastificationContent from '@/@core/components/toastification/ToastificationContent.vue'
+import {image} from "vee-validate/dist/rules";
 
 export default {
   components: {
-    BTab,
-    BTabs,
-    BCard,
-    BAlert,
-    BLink,
+    VueGoodTable,
+    BAvatar,
+    BPagination,
+    BFormGroup,
+    BFormInput,
+    BFormSelect,
+    BRow,
+    BCol,
 
-    UserEditTabAccount, /*
-    UserEditTabInformation,
-    UserEditTabSocial, */
+    // eslint-disable-next-line vue/no-unused-components
+    ToastificationContent,
   },
+
   data() {
     return {
-      userData: undefined,
-      isOkay: true,
+      pageLength: 20,
+      hideHow: true,
+      columns: [
+        {
+          label: '사번',
+          field: 'empCode',
+        },
+        {
+          label: '직원명',
+          field: 'empName',
+        },
+        {
+          label: '부서이름',
+          field: 'detailCodeName',
+        },
+      ],
+      emp_detail : '',
+      emp_image2: '',
+
+
     }
   },
   computed: {
-    ...mapState({
-      empBasicInfo: state => state.hr.emp.allEmpList.empList,
-      empDetail: state => state.hr.emp.empDetail.empDetailInfo,
-    }),
+    ...mapState('hr/emp', ['all_emp_list','selected_emp_detail' ]),
+
   },
+  /**
+   * 리엑트의 useEffect와 같음
+   */
   created() {
-    const emp = this.empBasicInfo.filter(e => e.empCode === 'EMP-01')
-    this.userData = { ...emp[0], ...this.empDetail[0] }
+    this.fetchAllEmp()
   },
   methods: {
-    abc() {
-      const emp = this.empBasicInfo.filter(e => e.empCode === 'EMP-01')
-      this.userData = { ...emp[0], ...this.empDetail[0] }
-      console.log('spread')
-      console.log(this.userData)
+    // 액션을 가져옴
+    ...mapActions('hr/emp', ['fetchAllEmp','findEmpDetail']),
+    // 검색
+    advanceSearch(val) {
+      this.searchTerm = val
     },
-    ok() {
-      this.isOkay = false
+//
+    onRowClick(params) {
+      const clickEmp = params.row.empCode
+      console.log(clickEmp)
+      if (clickEmp>0) {
+
+      } else {
+        this.$store.dispatch('hr/emp/findEmpDetail', clickEmp)
+      }
+
+      setTimeout(() => {
+        this.emp_detail = this.selected_emp_detail;
+      }, 100)
+
+      setTimeout(() => {
+        this.emp_image2 = require(`@/assets/images/avatars/${this.emp_detail.image}`);
+
+      }, 100)
     },
-  },
 
-  /* setup() {
-     const userData = ref(null)
+  }
 
-     const USER_APP_STORE_MODULE_NAME = 'app-user'
 
-     // Register module
-     if (!store.hasModule(USER_APP_STORE_MODULE_NAME)) store.registerModule(USER_APP_STORE_MODULE_NAME, userStoreModule)
-
-     // UnRegister on leave
-     onUnmounted(() => {
-       if (store.hasModule(USER_APP_STORE_MODULE_NAME)) store.unregisterModule(USER_APP_STORE_MODULE_NAME)
-     })
-
-     store.dispatch('app-user/fetchUser', { id: router.currentRoute.params.id })
-         .then(response => { userData.value = response.data })
-         .catch(error => {
-           if (error.response.status === 404) {
-             userData.value = undefined
-           }
-         })
-     return {
-       userData,
-     }
-   }, *//* setup() {
-    const userData = ref(null)
-
-    const USER_APP_STORE_MODULE_NAME = 'app-user'
-
-    // Register module
-    if (!store.hasModule(USER_APP_STORE_MODULE_NAME)) store.registerModule(USER_APP_STORE_MODULE_NAME, userStoreModule)
-
-    // UnRegister on leave
-    onUnmounted(() => {
-      if (store.hasModule(USER_APP_STORE_MODULE_NAME)) store.unregisterModule(USER_APP_STORE_MODULE_NAME)
-    })
-
-    store.dispatch('app-user/fetchUser', { id: router.currentRoute.params.id })
-        .then(response => { userData.value = response.data })
-        .catch(error => {
-          if (error.response.status === 404) {
-            userData.value = undefined
-          }
-        })
-
-    return {
-      userData,
-    }
-  }, */
 }
-</script>
 
-<style lang="scss">
-@import "/src/assets/scss/cutypretyButton.scss";
+</script>
+<style>
+.post {
+  width: 95%;
+  padding-left: 5%;
+  padding-top: 8%;
+}
+.post-body {
+  height: 280px;
+  width: 80%;
+  background-position: center;
+  background-size: cover;
+  border: 5px solid;
+  border-color: #161d31;
+
+}
+
 </style>
