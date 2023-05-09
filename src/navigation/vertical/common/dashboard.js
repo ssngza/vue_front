@@ -13,10 +13,6 @@ export default [
         title: '권한관리',
         route: 'dashboard-analytics',
       },
-      {
-        title: '휴게실',
-        route: 'music-player',
-      },
     ],
   },
 ]
