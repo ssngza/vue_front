@@ -239,15 +239,27 @@ export default {
       console.log(customerCode)
       console.log(customerName)
     },
+
+
+
     getGridData() {
       console.log('getGridData')
       this.$store.dispatch('logi/workInstruction/SHOW_WORK_INFO_LIST')
     },
+
+
+
     showGridData(val) {
       console.log(val)
     },
+
+
+
     gridInputModal() {
     },
+
+
+
     async detailGridInputModal(rowData) {
       const unitPrice = await this.$store.dispatch('logi/base/GET_STANDARD_UNIT_PRICE', rowData[0].itemCode)
 
@@ -257,6 +269,9 @@ export default {
       this.detailGrid[this.detailGrid.length - 1].unitPriceOfEstimate = unitPrice
       this.detailGrid[this.detailGrid.length - 1].sumPriceOfEstimate = calculation
     },
+
+
+
     async registData() {
       const customerInfo = this.customerCodeList.filter(e => e.customerName === this.grid[0].customerCode)
       const detailGridData = this.detailGrid.map(e => {
@@ -283,8 +298,14 @@ export default {
         })
       }
     },
+
+
+
   },
 }
+
+
+
 </script>
 
 <style lang="scss" scoped>

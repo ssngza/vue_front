@@ -15,6 +15,7 @@ const JOURNAL_URL = '/account/journal'
  */
 function selectSlips() {
   return accountApi.get(`${SLIP_URL}`)
+  // /account/slips
 }
 
 /**

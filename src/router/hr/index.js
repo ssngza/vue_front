@@ -9,13 +9,13 @@ const ERP = '/hr'
 const insaRouter = [
    {
       path: `${ERP}/home`,
-      name: 'home',
+      name: 'hrHome',
       component: () => import('@/views/hr/Home.vue'),
       meta: {
-         pageTitle: 'Home',
+         pageTitle: 'HR Home',
          breadcrumb: [
             {
-               text: 'Home',
+               text: 'HR Home',
                active: true,
             },
          ],
