@@ -20,7 +20,7 @@
     <div class="bookmark-wrapper align-items-center flex-grow-1 d-none d-lg-flex">
       <dark-Toggler class="d-none d-lg-block" />
     </div>
-    <MusicPlayer player-type="bar" />
+ 
     <HRNav />
     <AccNav />
     <LogiNav />
@@ -107,11 +107,10 @@ import DarkToggler from '@core/layouts/components/app-navbar/components/DarkTogg
 import AccNav from '@core/layouts/components/app-navbar/AccNav'
 import HRNav from '@core/layouts/components/app-navbar/HRNav'
 import LogiNav from '@core/layouts/components/app-navbar/LogiNav'
-import MusicPlayer from '@/components/common/musicPlayer/MusicPlayer'
 
 export default {
   components: {
-    AccNav,
+
     BLink,
     BNavbarNav,
     BNavItemDropdown,
@@ -125,7 +124,7 @@ export default {
     HRNav,
     AccNav,
     LogiNav,
-    MusicPlayer,
+
   },
   props: {
     toggleVerticalMenuActive: {
